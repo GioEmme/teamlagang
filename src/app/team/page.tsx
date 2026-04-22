@@ -18,7 +18,8 @@ const pilots = [
   { num: "06", name: "Andrea", role: "Lui sa chi chiamare...", cat: "Stock", bio: "Serve qualcuno? Lui sa indirizzarti dalla persona giusta!" },
   { num: "07", name: "Alessandro", role: "Il Verificatore", cat: "", bio: "A lui non scappa niente, quindi attenzione al banco controlli!" },
   { num: "08", name: "Danilo", role: "Il Saggio", cat: "1/10 GT", bio: "La voce saggia del gruppo, l'esperienza degli anni." },
-  { num: "09", name: "Giovanni", role: "L'ultimo arrivato... anche in gara!", cat: "1/12 GT", bio: "Sul setup ha ancora tanto da imparare." },
+  { num: "09", name: "Enrico", role: "", cat: "1/10 GT", bio: "" },
+  { num: "10", name: "Giovanni", role: "L'ultimo arrivato... anche in gara!", cat: "1/12 GT", bio: "Sul setup ha ancora tanto da imparare." },
 ];
 
 export default function TeamPage() {

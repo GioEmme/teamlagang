@@ -47,6 +47,8 @@ export function HeroCarousel({ images }: Props) {
         {/* Dark vignette overlays for text readability */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg/40 via-transparent to-bg z-10" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg/60 via-transparent to-bg/60 z-10" />
+        {/* Mobile-only stronger bottom vignette for paragraph readability */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-bg via-bg/85 to-transparent z-10 md:hidden" />
 
         {hasImages && (
           <ImageCounter progress={scrollYProgress} total={total} />
@@ -64,8 +66,8 @@ export function HeroCarousel({ images }: Props) {
             A.S. Team La Gang presenta
           </motion.div>
 
-          <div className="mx-auto max-w-[1600px] w-full px-5 md:px-10 mt-auto">
-            <h1 className="text-display leading-[0.85] text-[clamp(3rem,10vw,10rem)]">
+          <div className="mx-auto max-w-[1600px] w-full px-5 md:px-10 mt-4 md:mt-6">
+            <h1 className="text-display leading-[0.85] text-[clamp(4.5rem,16vw,12rem)]">
               <span className="block overflow-hidden">
                 <motion.span
                   initial={{ y: "110%" }}
@@ -95,13 +97,15 @@ export function HeroCarousel({ images }: Props) {
                 </motion.span>
               </span>
             </h1>
+          </div>
 
-            <div className="mt-8 md:mt-12 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-end">
+          <div className="mx-auto max-w-[1600px] w-full px-5 md:px-10 mt-auto">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-end">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9, duration: 0.8 }}
-                className="md:col-span-5 text-ink-dim leading-relaxed max-w-md"
+                className="md:col-span-5 text-ink md:text-ink-dim leading-relaxed max-w-md"
               >
                 Moquette sotto le ruote. Gomme calde. Radiocomandi alla mano.
                 RcLandia è la pista indoor del Team La Gang, aperta a chiunque
@@ -143,7 +147,7 @@ export function HeroCarousel({ images }: Props) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 0.8 }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-ink-dim z-20"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-ink-dim z-20"
         >
           <span className="font-mono text-[10px] uppercase tracking-[0.3em]">
             Scroll
@@ -247,7 +251,7 @@ function ImageCounter({
   const barX = useTransform(progress, [0, 1], ["-100%", "0%"]);
 
   return (
-    <div className="pointer-events-none absolute top-24 md:top-28 right-5 md:right-10 z-20 flex flex-col items-end gap-2">
+    <div className="pointer-events-none absolute top-24 md:top-28 right-5 md:right-10 z-20 hidden md:flex flex-col items-end gap-2">
       <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] text-ink-dim flex items-baseline gap-2">
         <motion.span className="text-yellow text-sm md:text-base">
           {idx}

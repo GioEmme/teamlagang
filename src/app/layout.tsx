@@ -74,7 +74,7 @@ export default function RootLayout({
         <SmoothScroll>
           <CustomCursor />
           <Navigation />
-          <main>{children}</main>
+          <main className="relative">{children}</main>
           <Footer />
         </SmoothScroll>
       </body>

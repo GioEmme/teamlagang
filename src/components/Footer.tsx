@@ -1,10 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { site } from "@/lib/site";
+import { getSponsorImages } from "@/lib/sponsorImages";
+import { SponsorsBanner } from "./SponsorsBanner";
 
 export function Footer() {
+  const sponsors = getSponsorImages();
   return (
     <footer className="relative bg-bg border-t border-white/5 overflow-hidden">
+      <SponsorsBanner logos={sponsors} />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-yellow to-transparent" />
 
       <div className="mx-auto max-w-[1600px] px-5 md:px-10 pt-20 md:pt-32 pb-10">
