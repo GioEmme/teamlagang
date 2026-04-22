@@ -14,12 +14,12 @@ const details: Record<
   { specs: string[]; note: string }
 > = {
   "touring-gt": {
-    specs: ["Scala 1/10", "Carrozzeria GT", "Motore brushless limitato", "Gomme omologate pista"],
-    note: "Gran turismo 1/10, look racing spettacolare, tempi sul giro competitivi.",
+    specs: ["Scala 1/10", "Carrozzeria GT o LM", "Motore brushless 21.5T", "Gomme Ride"],
+    note: "",
   },
   "touring-stock": {
-    specs: ["Scala 1/10", "Motore 17.5T - 21.5T", "ESC blinky", "Gomme controllate"],
-    note: "Categoria scuola per eccellenza. Tutti uguali, conta solo guida e assetto.",
+    specs: ["Scala 1/10", "Motore 17.5T", "", ""],
+    note: "",
   },
   "touring-modificata": {
     specs: ["Scala 1/10", "Motore open modified", "ESC no limits", "Setup libero"],

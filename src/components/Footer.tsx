@@ -68,36 +68,30 @@ export function Footer() {
               Social
             </h4>
             <ul className="space-y-2">
-              <li>
-                <a
-                  href={site.social.instagram}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-ink hover:text-yellow transition-colors"
-                >
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a
-                  href={site.social.facebook}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-ink hover:text-yellow transition-colors"
-                >
-                  Facebook
-                </a>
-              </li>
-              <li>
-                <a
-                  href={site.social.youtube}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-ink hover:text-yellow transition-colors"
-                >
-                  YouTube
-                </a>
-              </li>
+              {[
+                { label: "Instagram", key: "instagram" as const },
+                { label: "Facebook", key: "facebook" as const },
+                { label: "YouTube", key: "youtube" as const },
+                { label: "Pullstart", key: "pullstart" as const },
+                { label: "MyRCM", key: "myrcm" as const },
+              ].map((item) => {
+                const url = (site.social as Record<string, string | undefined>)[
+                  item.key
+                ];
+                if (!url) return null;
+                return (
+                  <li key={item.key}>
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-ink hover:text-yellow transition-colors"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

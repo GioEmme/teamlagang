@@ -5,6 +5,7 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { CustomCursor } from "@/components/CustomCursor";
+import { SocialRail, SocialFab } from "@/components/SocialRail";
 import { site } from "@/lib/site";
 
 const anton = Anton({
@@ -74,6 +75,8 @@ export default function RootLayout({
         <SmoothScroll>
           <CustomCursor />
           <Navigation />
+          <SocialRail />
+          <SocialFab />
           <main className="relative">{children}</main>
           <Footer />
         </SmoothScroll>
