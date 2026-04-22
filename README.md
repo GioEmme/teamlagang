@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Team La Gang · RcLandia
 
-## Getting Started
+Sito ufficiale di **A.S. Team La Gang** e della pista RC indoor **RcLandia**.
+Dominio: `teamlagang.it`
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** · App Router, Turbopack
+- **React 19** · TypeScript
+- **Tailwind CSS v4** · design system via `@theme` in `src/app/globals.css`
+- **Framer Motion 12** · micro-interazioni, scroll reveals
+- **React Three Fiber + drei** · hero 3D (RC car + pista animata)
+- **Lenis** · smooth scroll
+- **GSAP** · disponibile per animazioni avanzate
+
+## Sviluppo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev       # http://localhost:3000
+npm run build
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Struttura
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/                  # Route App Router
+│   ├── layout.tsx        # Root: fonts, Lenis, cursor, nav, footer
+│   ├── page.tsx          # Home
+│   ├── pista/            # RcLandia info + regolamento
+│   ├── team/             # Piloti
+│   ├── categorie/        # 7 categorie RC
+│   ├── eventi/           # Calendario + archivio
+│   ├── news/             # Blog
+│   ├── contatti/         # Form + info tesseramento
+│   ├── globals.css       # Tailwind v4 theme
+│   ├── sitemap.ts
+│   └── robots.ts
+├── components/
+│   ├── Navigation.tsx    # Header animato + mobile fullscreen
+│   ├── Footer.tsx
+│   ├── SmoothScroll.tsx  # Lenis provider
+│   ├── CustomCursor.tsx  # Cursor custom (solo desktop pointer:fine)
+│   ├── Hero3D.tsx        # Canvas R3F
+│   ├── three/
+│   │   ├── RcCar.tsx
+│   │   ├── Track.tsx
+│   │   └── SpeedParticles.tsx
+│   ├── Reveal.tsx        # Scroll reveal + split text
+│   ├── Marquee.tsx
+│   ├── MagneticButton.tsx
+│   ├── PageHero.tsx
+│   └── sections/         # Sezioni home
+│       ├── Hero.tsx
+│       ├── IntroManifesto.tsx
+│       ├── Categories.tsx
+│       ├── TrackSection.tsx
+│       ├── TeamPreview.tsx
+│       ├── NewsPreview.tsx
+│       └── CTA.tsx
+└── lib/
+    ├── site.ts           # Config: nav, categorie, social, copy
+    └── cn.ts
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Personalizzazione
 
-## Learn More
+### Colori brand (`src/app/globals.css`)
 
-To learn more about Next.js, take a look at the following resources:
+```css
+--color-yellow: #ffd500;     /* primario */
+--color-yellow-hot: #fff100;
+--color-red: #e63946;        /* accent Team La Gang */
+--color-blue: #1e4d8b;       /* RcLandia */
+--color-bg: #0a0a0a;
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Contenuti
+- Navigazione + categorie + copy: `src/lib/site.ts`
+- Piloti: `src/app/team/page.tsx`
+- Eventi: `src/app/eventi/page.tsx`
+- News: `src/app/news/page.tsx`
+- Indirizzo / email / telefono: `src/app/contatti/page.tsx`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Logo
+Sostituire `public/teamlagang-logo.png` e `public/rclandia-logo.png` mantenendo i nomi.
 
-## Deploy on Vercel
+## Performance
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Hero 3D disattiva shadows + particles su dispositivi `prefers-reduced-motion` o core < 4
+- `dpr` canvas adattivo (max 2 desktop, 1.25 mobile)
+- Cursor custom solo `pointer: fine`
+- Smooth scroll Lenis lerp 0.1
+- `next/font` con `display: swap`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy
+
+Ottimale su **Vercel** (zero config).
+Per altri provider: `npm run build` + `npm run start` (porta 3000).
+
+## Todo per produzione
+
+- [ ] Collegare form contatti a backend (Resend / Formspree / API route)
+- [ ] Sostituire piloti / eventi / news mock con CMS (Sanity, Contentful) o MDX
+- [ ] Aggiungere galleria foto/video pista
+- [ ] OG image dedicata
+- [ ] Cookie banner (GDPR)
+- [ ] Analytics (Vercel Analytics o Plausible)
