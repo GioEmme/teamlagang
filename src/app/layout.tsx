@@ -2,9 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Anton, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { CustomCursor } from "@/components/CustomCursor";
+import { SiteChrome } from "@/components/SiteChrome";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { CustomCursor } from "@/components/CustomCursor";
 import { SocialRail, SocialFab } from "@/components/SocialRail";
 import { site } from "@/lib/site";
 
@@ -74,11 +75,18 @@ export default function RootLayout({
         <div className="grain" aria-hidden />
         <SmoothScroll>
           <CustomCursor />
-          <Navigation />
-          <SocialRail />
-          <SocialFab />
-          <main className="relative">{children}</main>
-          <Footer />
+          <SiteChrome
+            nav={<Navigation />}
+            rails={
+              <>
+                <SocialRail />
+                <SocialFab />
+              </>
+            }
+            footer={<Footer />}
+          >
+            {children}
+          </SiteChrome>
         </SmoothScroll>
       </body>
     </html>

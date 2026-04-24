@@ -5,6 +5,7 @@ import { TrackSection } from "@/components/sections/TrackSection";
 import { TeamPreview } from "@/components/sections/TeamPreview";
 import { NewsPreview } from "@/components/sections/NewsPreview";
 import { CTA } from "@/components/sections/CTA";
+import { LocationSection } from "@/components/sections/LocationSection";
 import { getHeroImages } from "@/lib/heroImages";
 import { getManifestoImage } from "@/lib/manifestoImage";
 import { getCategoryImages } from "@/lib/categoryImages";
@@ -24,6 +25,7 @@ export default function Home() {
       <TeamPreview images={teamImages} />
       <NewsPreview />
       <CTA />
+      <LocationSection />
     </>
   );
 }

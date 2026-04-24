@@ -108,6 +108,27 @@ export function Navigation() {
 
           <div className="flex items-center gap-3">
             <Link
+              href="/login"
+              data-cursor="area"
+              aria-label="Area riservata"
+              className="hidden md:inline-flex items-center gap-2 px-3 py-2 border border-white/15 text-ink text-xs uppercase tracking-widest font-mono hover:border-yellow hover:text-yellow transition-colors"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-4 h-4"
+                aria-hidden
+              >
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6" />
+              </svg>
+              <span className="hidden lg:inline">Area</span>
+            </Link>
+            <Link
               href="/contatti"
               data-cursor="iscriviti"
               className="hidden md:inline-flex items-center gap-2 px-4 py-2 bg-yellow text-bg text-xs uppercase tracking-widest font-mono font-semibold hover:bg-yellow-hot transition-colors"
@@ -179,13 +200,19 @@ export function Navigation() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="mt-10"
+                className="mt-10 space-y-3"
               >
                 <Link
                   href="/contatti"
                   className="block w-full text-center py-4 bg-yellow text-bg text-lg uppercase tracking-widest font-display"
                 >
                   Tesseramento
+                </Link>
+                <Link
+                  href="/login"
+                  className="block w-full text-center py-4 border border-white/20 text-ink text-sm uppercase tracking-widest font-mono hover:border-yellow hover:text-yellow transition-colors"
+                >
+                  Area riservata
                 </Link>
               </motion.div>
             </nav>
