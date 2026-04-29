@@ -28,7 +28,7 @@ export function CTA() {
         <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
           <p className="md:col-span-5 text-bg/80 text-lg leading-relaxed max-w-md">
             Tesseramento aperto da settembre a giugno. Porta la tua RC, rispetta
-            le regole della pista, metti in fila i cronometri. Il resto viene
+            le regole della pista, lima i decimi giro dopo giro. Il resto viene
             da solo.
           </p>
           <div className="md:col-span-4 md:col-start-9 flex flex-wrap gap-3 md:justify-end">
