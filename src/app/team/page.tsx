@@ -32,7 +32,7 @@ export default function TeamPage() {
         title="La Gang"
         accent="al completo."
         color="red"
-        subtitle="Piloti, meccanici, amici. Ogni weekend in pista, settimana per settimana a limare decimi."
+        subtitle="Il direttivo del Team La Gang: le persone che tengono viva RcLandia. Pista, gare, calendario, accoglienza — settimana dopo settimana, dietro le quinte e in prima linea."
       />
 
       <section className="relative py-20 md:py-32 bg-bg">

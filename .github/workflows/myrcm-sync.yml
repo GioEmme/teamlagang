@@ -1,0 +1,36 @@
+name: myrcm sync
+
+on:
+  schedule:
+    # 06:00 UTC = 07:00 CET / 08:00 CEST every day
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+    inputs:
+      org_id:
+        description: "myrcm org id (default 5244 = RcLandia)"
+        required: false
+        default: "5244"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run myrcm sync
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          MYRCM_ORG_ID: ${{ github.event.inputs.org_id || '5244' }}
+        run: node scripts/myrcm-sync.mjs

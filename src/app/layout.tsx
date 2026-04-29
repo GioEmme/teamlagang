@@ -8,6 +8,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { SocialRail, SocialFab } from "@/components/SocialRail";
 import { site } from "@/lib/site";
+import { getNextEventInWindow } from "@/lib/myrcm";
 
 const anton = Anton({
   weight: "400",
@@ -63,9 +64,18 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  // Pulsing event teaser is shown when the next event is between 8 and 15 days away.
+  // Failure here must not break the layout — fall back to no teaser.
+  let nextEvent = null;
+  try {
+    nextEvent = await getNextEventInWindow(8, 15);
+  } catch (err) {
+    console.error("layout: getNextEventInWindow failed", err);
+  }
+
   return (
     <html
       lang="it"
@@ -79,8 +89,8 @@ export default function RootLayout({
             nav={<Navigation />}
             rails={
               <>
-                <SocialRail />
-                <SocialFab />
+                <SocialRail nextEvent={nextEvent} />
+                <SocialFab nextEvent={nextEvent} />
               </>
             }
             footer={<Footer />}

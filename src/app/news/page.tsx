@@ -32,10 +32,10 @@ export default async function NewsPage() {
       <PageHero
         index="05"
         label="News"
-        title="Dalla"
+        title="Dal"
         accent="box."
         color="yellow"
-        subtitle="Ultime gare, aggiornamenti pista, racconti dal paddock. Il cronometro parla, ma anche la box ha cose da dire."
+        subtitle="Ultime gare, aggiornamenti pista, racconti dal paddock. Il cronometro parla, ma anche il box ha cose da dire."
       />
 
       <section className="relative py-16 md:py-24 bg-bg">

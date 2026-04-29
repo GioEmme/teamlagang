@@ -34,7 +34,7 @@ export default async function LoginPage({
         </Link>
 
         <div className="font-mono text-xs uppercase tracking-[0.3em] text-yellow mb-3">
-          Area riservata
+          Box personale
         </div>
         <h1 className="text-display text-[clamp(2.5rem,7vw,4rem)] leading-[0.9] mb-8">
           Accedi.

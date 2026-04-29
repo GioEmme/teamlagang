@@ -51,9 +51,9 @@ export function TrackSection() {
               </RevealLine>
             </h2>
             <p className="mt-8 text-ink leading-relaxed max-w-md text-lg">
-              Pista indoor, moquette, illuminazione costante, barriere sicure.
-              Aperta al pubblico: basta il tesseramento e la tua macchina
-              rispettosa delle regole.
+              Pista indoor in moquette, tracciato permanente, 1000 m² su tre
+              aree box. Aperta al pubblico tesserato: basta la tessera annuale
+              e una macchina conforme al regolamento.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-3">
@@ -65,7 +65,7 @@ export function TrackSection() {
                 Info pista <span>→</span>
               </Link>
               <Link
-                href="/contatti"
+                href="/tesseramento"
                 data-cursor="iscriviti"
                 className="inline-flex items-center gap-3 px-6 py-3 border border-yellow text-yellow font-mono text-xs uppercase tracking-widest hover:bg-yellow hover:text-blue-deep transition-colors"
               >
@@ -75,16 +75,60 @@ export function TrackSection() {
           </div>
 
           <div className="md:col-span-5 md:col-start-8 flex flex-col gap-4">
-            <InfoRow k="Superficie" v="Moquette, tracciato permanente" />
-            <InfoRow k="Ambiente" v="Indoor, temperatura controllata" />
-            <InfoRow k="Accesso" v="Previa tessera + rispetto regolamento" />
-            <InfoRow k="Illuminazione" v="LED uniforme, zero ombre" />
-            <InfoRow k="Box" v="Postazioni piloti, carica batterie, officina" />
-            <InfoRow k="Orari" v="Calendario aggiornato · vedi Pista" />
+            <InfoRow k="Superficie" v="Moquette permanente" />
+            <InfoRow k="Dimensione" v="1000 m² · 3 aree box" />
+            <InfoRow k="Ambiente" v="Indoor" />
+            <InfoRow k="Accesso" v="Previo tesseramento + rispetto regolamento" />
+            <InfoRow k="Fondazione" v="2018" />
+            <InfoRow k="Categorie" v="7 attive" />
+          </div>
+        </div>
+
+        <div className="mt-20 md:mt-28">
+          <div className="font-mono text-xs uppercase tracking-[0.3em] text-yellow mb-6 md:mb-8">
+            Orari di apertura · Stagione 2025/26
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <ScheduleCard day="Mercoledì" tag="Serale" hours="20:00 — 24:00" />
+            <ScheduleCard day="Sabato" tag="Giornata piena" hours="09:00 — 19:00" />
+            <ScheduleCard day="Domenica" tag="Giornata piena" hours="09:00 — 19:00" />
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function ScheduleCard({
+  day,
+  tag,
+  hours,
+}: {
+  day: string;
+  tag: string;
+  hours: string;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="relative group bg-blue-deep/40 backdrop-blur-sm border border-yellow/30 hover:border-yellow transition-colors p-6 md:p-8 overflow-hidden"
+    >
+      <div className="absolute top-0 right-0 w-16 h-16 border-l border-b border-yellow/20" />
+      <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-yellow/70 mb-3">
+        {tag}
+      </div>
+      <div className="text-display text-4xl md:text-5xl text-ink leading-none mb-6">
+        {day}
+      </div>
+      <div className="flex items-baseline gap-2">
+        <span className="text-display text-3xl md:text-4xl text-yellow leading-none">
+          {hours}
+        </span>
+      </div>
+    </motion.div>
   );
 }
 

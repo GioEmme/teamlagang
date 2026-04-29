@@ -1,0 +1,1 @@
+ALTER TABLE "mr_events" ADD COLUMN "registration_status" text;

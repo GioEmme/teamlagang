@@ -22,6 +22,27 @@
       "when": 1777034142854,
       "tag": "0002_smart_zombie",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1777466487802,
+      "tag": "0003_smiling_invisible_woman",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1777466907814,
+      "tag": "0004_amazing_loa",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1777469523437,
+      "tag": "0005_melted_santa_claus",
+      "breakpoints": true
     }
   ]
 }

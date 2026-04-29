@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { auth } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: "Area riservata",
+  title: "Box personale",
   robots: { index: false, follow: false },
 };
 
@@ -22,7 +22,7 @@ export default async function AreaRiservataPage() {
           <span className="block text-yellow">{session.user.lastName}</span>
         </h1>
         <p className="mt-8 text-ink-dim max-w-lg mx-auto text-sm leading-relaxed">
-          Questa è la tua area. Qui arriveranno prenotazioni, calendario gare,
+          Questo è il tuo box. Qui arriveranno prenotazioni, calendario gare,
           risultati e altro. Per ora puoi gestire i tuoi dati nel{" "}
           <a
             href="/area-riservata/profilo"

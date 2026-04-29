@@ -61,8 +61,25 @@ export const newsInputSchema = z.object({
   published: z.boolean(),
 });
 
+export const contactInputSchema = z.object({
+  name: z.string().min(2, "Inserisci il tuo nome").max(100).trim(),
+  email: emailSchema,
+  category: z
+    .string()
+    .max(100)
+    .trim()
+    .optional()
+    .transform((v) => v ?? ""),
+  message: z
+    .string()
+    .min(10, "Messaggio troppo corto (min 10 caratteri)")
+    .max(5000, "Messaggio troppo lungo (max 5000)")
+    .trim(),
+});
+
 export type RegisterInput = z.infer<typeof registerSchema>;
 export type LoginInput = z.infer<typeof loginSchema>;
 export type UpdateProfileInput = z.infer<typeof updateProfileSchema>;
 export type ChangePasswordInput = z.infer<typeof changePasswordSchema>;
 export type NewsInput = z.infer<typeof newsInputSchema>;
+export type ContactInput = z.infer<typeof contactInputSchema>;

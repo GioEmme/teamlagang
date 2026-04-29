@@ -1,8 +1,10 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
+import type { NextEventTeaser } from "@/lib/myrcm";
 
 type Social = {
   name: string;
@@ -113,8 +115,13 @@ const socials: Social[] = (
   ] as (Social | null)[]
 ).filter((x): x is Social => x !== null);
 
-export function SocialRail() {
+export function SocialRail({
+  nextEvent = null,
+}: {
+  nextEvent?: NextEventTeaser | null;
+}) {
   const [hovered, setHovered] = useState<string | null>(null);
+  const [eventHover, setEventHover] = useState(false);
   const [attention, setAttention] = useState(true);
 
   useEffect(() => {
@@ -122,7 +129,7 @@ export function SocialRail() {
     return () => clearTimeout(t);
   }, []);
 
-  if (socials.length === 0) return null;
+  if (socials.length === 0 && !nextEvent) return null;
 
   return (
     <motion.div
@@ -131,6 +138,73 @@ export function SocialRail() {
       transition={{ delay: 1.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="fixed right-4 lg:right-6 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-3 items-center"
     >
+      {nextEvent ? (
+        <>
+          <Link
+            href="/eventi"
+            data-cursor="vai"
+            aria-label={`Prossimo evento: ${nextEvent.name} tra ${nextEvent.daysUntil} giorni`}
+            onMouseEnter={() => setEventHover(true)}
+            onMouseLeave={() => setEventHover(false)}
+            className="group relative"
+          >
+            {/* Two staggered pulse rings, continuous */}
+            <motion.span
+              aria-hidden
+              animate={{ scale: [1, 2.2], opacity: [0.55, 0] }}
+              transition={{
+                duration: 1.6,
+                repeat: Infinity,
+                ease: "easeOut",
+              }}
+              className="absolute inset-0 rounded-full border-2 border-yellow pointer-events-none"
+            />
+            <motion.span
+              aria-hidden
+              animate={{ scale: [1, 2.2], opacity: [0.55, 0] }}
+              transition={{
+                duration: 1.6,
+                repeat: Infinity,
+                ease: "easeOut",
+                delay: 0.8,
+              }}
+              className="absolute inset-0 rounded-full border-2 border-yellow pointer-events-none"
+            />
+
+            <motion.span
+              animate={{ scale: eventHover ? 1.12 : 1 }}
+              transition={{ type: "spring", damping: 15, stiffness: 300 }}
+              className="relative w-10 h-10 rounded-full bg-yellow text-bg flex flex-col items-center justify-center font-display leading-none shadow-[0_4px_18px_rgba(255,213,0,0.4)]"
+            >
+              <span className="text-base">{nextEvent.daysUntil}</span>
+              <span className="text-[7px] font-mono tracking-widest mt-0.5">
+                GG
+              </span>
+            </motion.span>
+
+            <AnimatePresence>
+              {eventHover && (
+                <motion.span
+                  initial={{ opacity: 0, x: 8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 8 }}
+                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute right-[calc(100%+10px)] top-1/2 -translate-y-1/2 px-3 py-2 bg-bg border border-yellow font-mono text-[10px] uppercase tracking-widest text-yellow whitespace-nowrap pointer-events-none"
+                >
+                  Tra {nextEvent.daysUntil}{" "}
+                  {nextEvent.daysUntil === 1 ? "giorno" : "giorni"} ·{" "}
+                  {nextEvent.name}
+                  <span className="absolute top-1/2 -right-1 w-2 h-2 bg-bg border-t border-r border-yellow -translate-y-1/2 rotate-45" />
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </Link>
+
+          {/* Separator between event teaser and social block */}
+          <span className="w-6 h-px bg-yellow/30" />
+        </>
+      ) : null}
+
       <span className="flex flex-col items-center gap-3 mb-1 text-[10px] font-mono uppercase tracking-[0.3em] text-ink-faint">
         <span className="[writing-mode:vertical-rl] rotate-180">Social</span>
         <span className="w-px h-6 bg-ink-faint/60" />
@@ -221,7 +295,11 @@ export function SocialRail() {
   );
 }
 
-export function SocialFab() {
+export function SocialFab({
+  nextEvent = null,
+}: {
+  nextEvent?: NextEventTeaser | null;
+}) {
   const [open, setOpen] = useState(false);
   const [attention, setAttention] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
@@ -246,13 +324,49 @@ export function SocialFab() {
     };
   }, [open]);
 
-  if (socials.length === 0) return null;
+  if (socials.length === 0 && !nextEvent) return null;
 
   return (
     <div
       ref={ref}
       className="fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-40 md:hidden flex flex-col items-center gap-3"
     >
+      {nextEvent && !open ? (
+        <Link
+          href="/eventi"
+          aria-label={`Prossimo evento: ${nextEvent.name} tra ${nextEvent.daysUntil} giorni`}
+          className="relative"
+        >
+          {/* Two staggered pulse rings, continuous */}
+          <motion.span
+            aria-hidden
+            animate={{ scale: [1, 2.1], opacity: [0.55, 0] }}
+            transition={{
+              duration: 1.6,
+              repeat: Infinity,
+              ease: "easeOut",
+            }}
+            className="absolute inset-0 rounded-full border-2 border-yellow pointer-events-none"
+          />
+          <motion.span
+            aria-hidden
+            animate={{ scale: [1, 2.1], opacity: [0.55, 0] }}
+            transition={{
+              duration: 1.6,
+              repeat: Infinity,
+              ease: "easeOut",
+              delay: 0.8,
+            }}
+            className="absolute inset-0 rounded-full border-2 border-yellow pointer-events-none"
+          />
+          <span className="relative w-12 h-12 rounded-full bg-yellow text-bg flex flex-col items-center justify-center font-display leading-none shadow-[0_6px_22px_rgba(255,213,0,0.45)]">
+            <span className="text-lg">{nextEvent.daysUntil}</span>
+            <span className="text-[8px] font-mono tracking-widest mt-0.5">
+              GG
+            </span>
+          </span>
+        </Link>
+      ) : null}
       <AnimatePresence>
         {open && (
           <motion.div

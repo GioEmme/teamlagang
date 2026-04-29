@@ -100,7 +100,7 @@ export function Hero() {
                 <span className="absolute inset-0 bg-yellow-hot -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
               </Link>
               <Link
-                href="/contatti"
+                href="/tesseramento"
                 data-cursor="iscrizione"
                 className="inline-flex items-center gap-3 px-6 py-3 border border-white/30 font-mono text-xs uppercase tracking-widest hover:border-yellow hover:text-yellow transition-colors"
               >
