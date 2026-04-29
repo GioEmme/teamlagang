@@ -19,7 +19,7 @@ export async function NewsPreview() {
     .orderBy(desc(news.publishedAt))
     .limit(3);
 
-  if (posts.length === 0) return null;
+  const isEmpty = posts.length === 0;
 
   return (
     <section className="relative py-24 md:py-40 bg-bg-soft">
@@ -35,21 +35,53 @@ export async function NewsPreview() {
               <span className="text-yellow">box.</span>
             </h2>
           </div>
-          <Link
-            href="/news"
-            data-cursor="archivio"
-            className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-yellow hover:text-yellow-hot"
-          >
-            Archivio completo <span>→</span>
-          </Link>
+          {!isEmpty && (
+            <Link
+              href="/news"
+              data-cursor="archivio"
+              className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-yellow hover:text-yellow-hot"
+            >
+              Archivio completo <span>→</span>
+            </Link>
+          )}
         </div>
 
+        {isEmpty ? (
+          <Reveal>
+            <div className="relative border border-white/10 bg-bg px-6 py-16 md:px-12 md:py-24 overflow-hidden">
+              <div className="absolute -top-10 -right-10 text-display text-[10rem] md:text-[16rem] leading-none text-yellow/5 select-none pointer-events-none">
+                ON AIR
+              </div>
+              <div className="relative max-w-2xl">
+                <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-yellow mb-4">
+                  Stand-by · Box silenzioso
+                </div>
+                <h3 className="text-display text-[clamp(1.8rem,4vw,3.4rem)] leading-tight mb-5">
+                  Le storie stanno{" "}
+                  <span className="text-yellow">scaldando le gomme.</span>
+                </h3>
+                <p className="text-ink-dim text-base md:text-lg leading-relaxed">
+                  Ancora niente cronaca da raccontare, ma la pista non dorme
+                  mai. Torna presto: le prime news arrivano direttamente dal
+                  paddock.
+                </p>
+                <Link
+                  href="/eventi"
+                  data-cursor="vai"
+                  className="mt-8 inline-flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-yellow hover:text-yellow-hot"
+                >
+                  Intanto, guarda il calendario <span>→</span>
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+        ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {posts.map((n, i) => (
             <Reveal key={n.slug} delay={i * 0.08}>
               <Link
                 href={`/news/${n.slug}`}
-                className="group relative bg-bg border border-white/10 hover:border-yellow transition-colors flex flex-col h-[340px] overflow-hidden"
+                className="group relative bg-bg border border-white/10 hover:border-yellow transition-colors flex flex-col h-[360px] overflow-hidden"
               >
                 <div className="relative w-full h-36 flex-none overflow-hidden bg-bg-elev">
                   {n.coverImage ? (
@@ -100,6 +132,7 @@ export async function NewsPreview() {
             </Reveal>
           ))}
         </div>
+        )}
       </div>
     </section>
   );
