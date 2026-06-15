@@ -57,10 +57,52 @@ function cleanText(s) {
   return s?.replace(/ /g, " ").replace(/\s+/g, " ").trim() ?? "";
 }
 
+const FETCH_TIMEOUT_MS = 30000;
+const FETCH_RETRIES = 3;
+
+function describeCause(err) {
+  const c = err?.cause;
+  if (!c) return "";
+  return ` (cause: ${c.code ?? c.message ?? String(c)})`;
+}
+
+async function fetchOnce(url) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
+  try {
+    const res = await fetch(url, {
+      headers: { "User-Agent": USER_AGENT },
+      signal: ctrl.signal,
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status} fetching ${url}`);
+    return await res.text();
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function fetchHtml(url) {
-  const res = await fetch(url, { headers: { "User-Agent": USER_AGENT } });
-  if (!res.ok) throw new Error(`HTTP ${res.status} fetching ${url}`);
-  return res.text();
+  let lastErr;
+  for (let attempt = 1; attempt <= FETCH_RETRIES + 1; attempt++) {
+    try {
+      return await fetchOnce(url);
+    } catch (err) {
+      lastErr = err;
+      if (attempt <= FETCH_RETRIES) {
+        const backoff = 1500 * attempt * attempt; // 1.5s, 6s, 13.5s
+        log(
+          "RETRY",
+          `attempt ${attempt}/${FETCH_RETRIES} failed: ${err.message}${describeCause(err)} — retry in ${backoff}ms`,
+        );
+        await sleep(backoff);
+      }
+    }
+  }
+  // Enrich the final message with the underlying cause for the DB record.
+  if (lastErr && !String(lastErr.message).includes("cause")) {
+    lastErr.message = `${lastErr.message}${describeCause(lastErr)}`;
+  }
+  throw lastErr;
 }
 
 // --------------- parsers ---------------
@@ -410,7 +452,7 @@ async function main() {
         champsProcessed,
         err,
       );
-    log("ERROR", err.stack || err.message || String(err));
+    log("ERROR", `${err.stack || err.message || String(err)}${describeCause(err)}`);
     process.exitCode = 1;
   }
 }
