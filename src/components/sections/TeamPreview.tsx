@@ -13,16 +13,16 @@ import Image from "next/image";
 import { cn } from "@/lib/cn";
 
 const pilots = [
-  { num: "01", name: "Alberto", role: "Il Presidente", cat: "1/12 GT", bio: "...non serve aggiungere altro." },
-  { num: "02", name: "Isacco", role: "Il Vice", cat: "", bio: "Braccio destro del presidente e Direttore Gara ACI del team." },
-  { num: "03", name: "Alberto", role: "Il Tesoriere", cat: "", bio: "L'economo del gruppo." },
-  { num: "04", name: "Roberto", role: "Il Segretario", cat: "", bio: "Lui controlla e verbalizza... verbalizza e controlla." },
-  { num: "05", name: "Alessandro", role: "Il Creativo", cat: "FWD", bio: "Chi sale sul podio avrà una sua opera tra le mani!" },
-  { num: "06", name: "Andrea", role: "Lui sa chi chiamare...", cat: "Stock", bio: "Serve qualcuno? Lui sa indirizzarti dalla persona giusta!" },
-  { num: "07", name: "Alessandro", role: "Il Verificatore", cat: "", bio: "A lui non scappa niente, quindi attenzione al banco controlli!" },
-  { num: "08", name: "Danilo", role: "Il Saggio", cat: "1/10 GT", bio: "La voce saggia del gruppo, l'esperienza degli anni." },
-  { num: "09", name: "Enrico", role: "", cat: "1/10 GT", bio: "" },
-  { num: "10", name: "Giovanni", role: "L'ultimo arrivato... anche in gara!", cat: "1/12 GT", bio: "Sul setup ha ancora tanto da imparare." },
+  { num: "01", name: "Alberto", surname: "Montecchi" },
+  { num: "02", name: "Isacco", surname: "Fornaciari" },
+  { num: "03", name: "Alberto", surname: "Spadoni" },
+  { num: "04", name: "Roberto", surname: "Petazzoni" },
+  { num: "05", name: "Alessandro", surname: "Davoli" },
+  { num: "06", name: "Andrea", surname: "Restrivi" },
+  { num: "07", name: "Alessandro", surname: "Lonardi" },
+  { num: "08", name: "Danilo", surname: "Donadelli" },
+  { num: "09", name: "Enrico", surname: "Rabitti" },
+  { num: "10", name: "Giovanni", surname: "Mauramati" },
 ];
 
 export function TeamPreview({
@@ -98,7 +98,7 @@ export function TeamPreview({
               data-cursor="team"
               className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-yellow hover:text-yellow-hot"
             >
-              Tutti i piloti <span>→</span>
+              Il direttivo <span>→</span>
             </Link>
           </div>
         </motion.div>
@@ -144,8 +144,10 @@ export function TeamPreview({
                     </span>
                   </div>
                   <div>
-                    <div className="text-display text-2xl md:text-3xl leading-tight group-hover:text-yellow transition-colors">
+                    <div className="text-display text-2xl md:text-3xl leading-[0.95] group-hover:text-yellow transition-colors">
                       {p.name}
+                      <br />
+                      {p.surname}
                     </div>
                   </div>
                 </div>

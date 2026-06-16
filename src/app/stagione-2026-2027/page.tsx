@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import fs from "node:fs";
+import path from "node:path";
 import Link from "next/link";
+import Image from "next/image";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { site } from "@/lib/site";
@@ -9,6 +12,20 @@ export const metadata: Metadata = {
   description:
     "Italian Indoor Series 2026/27 a RcLandia: calendario ufficiale, regolamento sportivo, svolgimento gara, punteggio, costi di iscrizione e modalità di pagamento.",
 };
+
+// Logo Charity Race (opzionale): metti il file in public/loghi/charity-race.(png|jpg|webp).
+function findCharityLogo(): string | null {
+  try {
+    const dir = path.join(process.cwd(), "public", "loghi");
+    const f = fs
+      .readdirSync(dir)
+      .find((n) => /^charity-race\.(png|jpe?g|webp|avif)$/i.test(n));
+    return f ? `/loghi/${f}` : null;
+  } catch {
+    return null;
+  }
+}
+const charityLogo = findCharityLogo();
 
 // ----- Punteggio Finale A / B / C (regolamento sportivo 2026/27) -----
 const POINTS: { a: [number, number]; b: [number, number]; c: [number, number] }[] = [
@@ -145,6 +162,71 @@ export default function Stagione2627Page() {
               const isIis = "iis" in e && e.iis;
               const round = "round" in e ? e.round : null;
               const note = "note" in e ? e.note : null;
+              const isCharity = "charity" in e && e.charity;
+
+              if (isCharity) {
+                return (
+                  <Reveal key={i}>
+                    <div className="py-5 md:py-6 px-2 md:px-4">
+                      <div className="border border-red/40 bg-red/[0.06] p-5 md:p-6">
+                        <div className="flex flex-col md:flex-row md:items-center gap-5">
+                          {charityLogo ? (
+                            <div className="relative w-16 h-16 md:w-20 md:h-20 flex-none rounded-full overflow-hidden ring-1 ring-white/10">
+                              <Image
+                                src={charityLogo}
+                                alt="Charity Race"
+                                fill
+                                sizes="80px"
+                                className="object-cover scale-[1.04]"
+                              />
+                            </div>
+                          ) : null}
+                          <div className="flex-1 min-w-0">
+                            <div className="flex flex-wrap items-center gap-3 mb-1">
+                              <span className="inline-flex items-center font-mono text-[10px] uppercase tracking-widest px-2 py-0.5 border text-red border-red/50 bg-red/10">
+                                Charity Race
+                              </span>
+                              <time className="font-mono text-sm text-yellow">
+                                {e.date}
+                              </time>
+                            </div>
+                            <div className="text-display text-xl md:text-2xl leading-tight text-ink">
+                              {e.title}
+                            </div>
+                            <p className="mt-2 text-sm text-ink-dim leading-relaxed max-w-2xl">
+                              Negli ultimi due anni il ricavato dell&apos;evento è
+                              stato devoluto da RcLandia e Charity Race
+                              all&apos;associazione{" "}
+                              <span className="text-ink">Casina dei Bimbi</span>.
+                            </p>
+                          </div>
+                          <a
+                            href="https://www.casinadeibimbi.org"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-cursor="vai"
+                            className="flex-none self-start md:self-center"
+                            aria-label="Casina dei Bimbi"
+                          >
+                            <span className="block bg-white rounded p-2.5 md:p-3 hover:opacity-90 transition-opacity">
+                              <span className="relative block w-32 h-9 md:w-40 md:h-11">
+                                <Image
+                                  src="/loghi/casina-dei-bimbi.png"
+                                  alt="Casina dei Bimbi"
+                                  fill
+                                  sizes="160px"
+                                  className="object-contain"
+                                />
+                              </span>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </Reveal>
+                );
+              }
+
               return (
                 <Reveal key={i}>
                   <div className="grid grid-cols-12 gap-4 py-6 md:py-7 px-2 md:px-4 hover:bg-bg-elev transition-colors">
