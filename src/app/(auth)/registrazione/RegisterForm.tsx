@@ -75,11 +75,11 @@ export function RegisterForm() {
           className="mt-0.5 w-4 h-4 accent-yellow"
         />
         <span className="font-mono text-[10px] uppercase tracking-widest text-ink-dim leading-relaxed group-hover:text-ink transition-colors">
-          Accetto{" "}
+          Dichiaro di aver letto la{" "}
           <a href="/privacy" target="_blank" className="text-yellow hover:underline">
             Privacy
           </a>{" "}
-          e{" "}
+          e la{" "}
           <a href="/cookie" target="_blank" className="text-yellow hover:underline">
             Cookie policy
           </a>

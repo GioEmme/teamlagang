@@ -22,7 +22,7 @@ export const registerSchema = z.object({
   password: passwordSchema,
   tesseraCode: tesseraSchema,
   consent: z.literal(true, {
-    message: "Devi accettare privacy e termini",
+    message: "Devi dichiarare di aver letto privacy e cookie policy",
   }),
 });
 
