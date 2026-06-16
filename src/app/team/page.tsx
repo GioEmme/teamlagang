@@ -15,7 +15,7 @@ const pilots = [
   { num: "03", name: "Alberto", surname: "Spadoni" },
   { num: "04", name: "Roberto", surname: "Petazzoni" },
   { num: "05", name: "Alessandro", surname: "Davoli" },
-  { num: "06", name: "Andrea", surname: "Restrivi" },
+  { num: "06", name: "Andrea", surname: "Retrivi" },
   { num: "07", name: "Alessandro", surname: "Lonardi" },
   { num: "08", name: "Danilo", surname: "Donadelli" },
   { num: "09", name: "Enrico", surname: "Rabitti" },
