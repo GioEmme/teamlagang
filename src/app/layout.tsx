@@ -54,9 +54,8 @@ export const metadata: Metadata = {
     locale: "it_IT",
     url: `https://${site.domain}`,
   },
-  icons: {
-    icon: "/teamlagang-logo.png",
-  },
+  // Favicon/icone gestite dalle file-convention in src/app:
+  // favicon.ico, icon.png, apple-icon.png (logo Charity Race).
 };
 
 export const viewport: Viewport = {
