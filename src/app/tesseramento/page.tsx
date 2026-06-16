@@ -6,7 +6,7 @@ import { Reveal } from "@/components/Reveal";
 export const metadata: Metadata = {
   title: "Tesseramento e accessi",
   description:
-    "Tessera annuale 20€, accessi giornalieri 20€ o mezza giornata 12€. Regole chiare, costi onesti, pista aperta da settembre a giugno a RcLandia.",
+    "Tessera annuale 30€, accessi giornalieri 25€ o mezza giornata 15€. Regole chiare, costi onesti, pista aperta da settembre a giugno a RcLandia.",
 };
 
 const benefits = [
@@ -90,7 +90,7 @@ export default function TesseramentoPage() {
                 </div>
                 <div className="flex items-baseline gap-2 mb-2">
                   <span className="text-display text-7xl md:text-8xl text-ink leading-none">
-                    20
+                    30
                   </span>
                   <span className="text-display text-3xl md:text-4xl text-yellow leading-none">
                     €
@@ -127,7 +127,7 @@ export default function TesseramentoPage() {
                 </div>
                 <div className="flex items-baseline gap-2 mb-2">
                   <span className="text-display text-7xl md:text-8xl text-ink leading-none">
-                    20
+                    25
                   </span>
                   <span className="text-display text-3xl md:text-4xl text-ink-dim leading-none">
                     €
@@ -161,7 +161,7 @@ export default function TesseramentoPage() {
                 </div>
                 <div className="flex items-baseline gap-2 mb-2">
                   <span className="text-display text-7xl md:text-8xl text-ink leading-none">
-                    12
+                    15
                   </span>
                   <span className="text-display text-3xl md:text-4xl text-ink-dim leading-none">
                     €
