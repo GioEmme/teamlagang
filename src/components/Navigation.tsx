@@ -126,6 +126,9 @@ export function Navigation() {
           </nav>
 
           <div className="flex items-center gap-3">
+            {/* Box personale (area riservata) temporaneamente nascosto al pubblico.
+                Backend e logica restano attivi: /login resta raggiungibile via URL per admin.
+                Per riattivare l'accesso pubblico, rimuovere questo commento.
             <Link
               href="/login"
               data-cursor="box"
@@ -147,6 +150,7 @@ export function Navigation() {
               </svg>
               <span className="hidden lg:inline">Box personale</span>
             </Link>
+            */}
             <Link
               href="/tesseramento"
               data-cursor="iscriviti"
@@ -239,12 +243,14 @@ export function Navigation() {
                 >
                   Tesseramento
                 </Link>
+                {/* Box personale temporaneamente nascosto al pubblico — vedi commento sopra.
                 <Link
                   href="/login"
                   className="block w-full text-center py-4 border border-white/20 text-ink text-sm uppercase tracking-widest font-mono hover:border-yellow hover:text-yellow transition-colors"
                 >
                   Box personale
                 </Link>
+                */}
               </motion.div>
             </nav>
           </motion.div>
