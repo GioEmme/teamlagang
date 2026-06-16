@@ -1,14 +1,30 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LocationMap } from "./LocationMap";
 
-const MAPS_URL =
-  "https://www.google.com/maps/dir/?api=1&destination=Via+Fratelli+Rosselli+13%2C+42019+Scandiano+RE+Italia";
+const ADDRESS = "Via Fratelli Rosselli 13, 42019 Scandiano RE, Italia";
+const GMAPS_URL = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+  ADDRESS,
+)}`;
 
 export function LocationSection() {
   const ref = useRef<HTMLDivElement>(null);
+  const [navUrl, setNavUrl] = useState(GMAPS_URL);
+
+  useEffect(() => {
+    // Su dispositivi Apple apri Apple Maps (navigatore di default), altrove Google Maps.
+    const ua = navigator.userAgent || "";
+    const isApple =
+      /iPhone|iPad|iPod/.test(ua) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    if (isApple) {
+      setNavUrl(
+        `https://maps.apple.com/?daddr=${encodeURIComponent(ADDRESS)}&dirflg=d`,
+      );
+    }
+  }, []);
 
   return (
     <section
@@ -79,13 +95,29 @@ export function LocationSection() {
             </div>
 
             <a
-              href={MAPS_URL}
+              href={navUrl}
               target="_blank"
               rel="noreferrer"
-              data-cursor="go"
-              className="group mt-10 inline-flex items-center gap-3 px-6 py-3 bg-yellow text-bg font-mono text-xs uppercase tracking-widest font-semibold hover:bg-yellow-hot transition-colors self-start"
+              data-cursor="naviga"
+              className="group mt-10 inline-flex items-center gap-3 px-7 py-4 bg-yellow text-bg font-mono text-xs uppercase tracking-widest font-semibold hover:bg-yellow-hot transition-colors self-start"
             >
-              Indicazioni stradali <span className="group-hover:translate-x-1 transition-transform">→</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-4 h-4"
+                aria-hidden
+              >
+                <path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10Z" />
+                <circle cx="12" cy="11" r="2.2" />
+              </svg>
+              Apri nel navigatore
+              <span className="group-hover:translate-x-1 transition-transform">
+                →
+              </span>
             </a>
           </div>
         </div>
