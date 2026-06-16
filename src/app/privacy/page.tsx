@@ -34,8 +34,7 @@ export default function PrivacyPage() {
               Via Fratelli Rosselli 13, 42019 Scandiano (Reggio Emilia), Italia.
             </p>
             <p>
-              Codice Fiscale / Partita IVA:{" "}
-              <Todo>inserire C.F. / P.IVA dell&apos;associazione</Todo>.
+              Codice Fiscale: 91077300357 · Partita IVA: 02514650353.
             </p>
             <p>
               Per qualsiasi richiesta relativa ai tuoi dati puoi scrivere a{" "}
@@ -262,13 +261,5 @@ function Block({
         {children}
       </div>
     </div>
-  );
-}
-
-function Todo({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="bg-red/15 text-red px-1.5 py-0.5 font-mono text-xs">
-      [{children}]
-    </span>
   );
 }
