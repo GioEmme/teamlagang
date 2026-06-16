@@ -81,9 +81,10 @@ export function Categories({ images = {} }: { images?: Record<string, string> })
               </h2>
             </div>
             <p className="md:max-w-sm text-ink-dim leading-relaxed">
-              Dalla scuola Tamiya TT02 fino alla modificata senza limiti.
-              Passando per la 1/12 Pancar, i piccoli bolidi da velocità, ma
-              anche la categoria GT12 &amp; LM per i più malinconici.
+              Si va dalle classi a motore controllato, regole strette e costi
+              più contenuti, fino alla Modificata a motore e regolatore liberi —
+              la più spinta. In mezzo, touring 1/10 e Pancar 1/12 per ogni tipo
+              di guida.
             </p>
           </div>
         </motion.div>

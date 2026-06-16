@@ -22,21 +22,20 @@ export function TrackSection() {
     >
       <motion.div
         style={{ y: logoY, scale }}
-        className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none"
+        className="absolute inset-0 pointer-events-none will-change-transform"
       >
-        <div className="relative w-[180%] h-[60%]">
-          <Image
-            src="/rclandia-logo.png"
-            alt=""
-            fill
-            sizes="180vw"
-            className="object-contain"
-            aria-hidden
-          />
-        </div>
+        <Image
+          src="/pista.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+          aria-hidden
+        />
       </motion.div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-blue/40 via-transparent to-blue-deep/80" />
+      <div className="absolute inset-0 bg-blue/45 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-deep/60 via-blue-deep/45 to-blue-deep/90 pointer-events-none" />
 
       <div className="relative mx-auto max-w-[1600px] px-5 md:px-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
@@ -45,9 +44,9 @@ export function TrackSection() {
               03 · La pista
             </div>
             <h2 className="text-display text-[clamp(3rem,8vw,8rem)] leading-[0.9] text-yellow">
-              <RevealLine>RcLandia</RevealLine>
+              <RevealLine>Benvenuti</RevealLine>
               <RevealLine delay={0.1} className="text-ink">
-                è casa.
+                in pista.
               </RevealLine>
             </h2>
             <p className="mt-8 text-ink leading-relaxed max-w-md text-lg">
@@ -79,14 +78,14 @@ export function TrackSection() {
             <InfoRow k="Dimensione" v="1000 m² · 3 aree box" />
             <InfoRow k="Ambiente" v="Indoor" />
             <InfoRow k="Accesso" v="Previo tesseramento + rispetto regolamento" />
-            <InfoRow k="Fondazione" v="2018" />
+            <InfoRow k="Fondazione" v="2010 · Team La Gang" />
             <InfoRow k="Categorie" v="7 attive" />
           </div>
         </div>
 
         <div className="mt-20 md:mt-28">
           <div className="font-mono text-xs uppercase tracking-[0.3em] text-yellow mb-6 md:mb-8">
-            Orari di apertura · Stagione 2025/26
+            Orari di apertura · Stagione 2026/27
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <ScheduleCard day="Mercoledì" tag="Serale" hours="20:00 — 24:00" />

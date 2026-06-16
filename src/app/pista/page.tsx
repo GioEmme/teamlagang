@@ -17,49 +17,49 @@ const rules: { n: string; t: string; d: string; scope: Scope }[] = [
     n: "01",
     t: "Affiliazione ACI",
     scope: "Sempre",
-    d: "Siamo un'associazione affiliata ACI: significa standard riconosciuti, copertura assicurativa solida e una bussola ufficiale a cui affidarsi per qualunque dettaglio non scritto in queste righe.",
+    d: "Siamo un'associazione affiliata ACI: standard riconosciuti, copertura assicurativa e un regolamento ufficiale di riferimento per tutto ciò che non è specificato qui.",
   },
   {
     n: "02",
     t: "Sicurezza batterie",
     scope: "Sempre",
-    d: "Le LiPo sono potenti e meritano rispetto. In impianto si carica e scarica a massimo 10 A e sempre dentro al liposack: regole non negoziabili, perché la sicurezza di tutti viene prima di qualsiasi cronometro. Vale per le gare e ovviamente anche nelle giornate libere.",
+    d: "Le batterie LiPo vanno gestite con attenzione. In impianto si carica e scarica a massimo 10 A e sempre dentro al liposack: regole obbligatorie per la sicurezza di tutti, valide in gara e nelle giornate libere.",
   },
   {
     n: "03",
     t: "Rispetto della struttura",
     scope: "Sempre",
-    d: "RcLandia è casa nostra, e vogliamo che lo sia anche per chi viene a trovarci. Box puliti, modi educati, nessuna provocazione: tre piccoli accorgimenti che mantengono l'atmosfera che tutti cerchiamo quando si entra in pista, ogni giorno della settimana.",
+    d: "RcLandia va rispettata come ogni spazio condiviso. Box puliti, modi educati, nessuna provocazione: accorgimenti semplici che tengono l'ambiente piacevole per tutti, ogni giorno della settimana. Ingiurie o comportamenti che disturbano la manifestazione comportano l'esclusione e, se necessario, l'allontanamento dalla struttura.",
   },
   {
     n: "04",
     t: "Verifica tecnica",
     scope: "In gara",
-    d: "Prima di ogni sessione di gara una rapida verifica al banco: pochi secondi per garantire che tutti corrano alle stesse condizioni. I giudici verificatori sono lì per aiutarvi, e per loro natura hanno l'ultima parola sulle eventuali irregolarità.",
+    d: "Prima di ogni sessione di gara c'è una rapida verifica al banco: serve a garantire che tutti corrano alle stesse condizioni. I giudici verificatori hanno l'ultima parola sulle eventuali irregolarità.",
   },
   {
     n: "05",
     t: "Carrozzerie e decal",
     scope: "In gara",
-    d: "Carrozzeria verniciata, decal di fari e calandre montate, vetri trasparenti per il controllo interno: piccoli dettagli che fanno la differenza tra un modello da gara e un giocattolo. È anche per questo che i nostri schieramenti sono belli da vedere.",
+    d: "Carrozzeria verniciata, decal di fari e calandre montate, vetri trasparenti per il controllo interno: sono requisiti obbligatori per gareggiare. I modelli che non li rispettano non prendono il via.",
   },
   {
     n: "06",
     t: "Palco e recuperi",
     scope: "In gara",
-    d: "Una volta saliti sul palco si resta fino al termine della manche, anche con l'auto ferma — è la base per non interferire con chi sta correndo. I recuperi spettano alla manche appena finita: un gesto di mutuo soccorso che fa girare bene la giornata. Se proprio non puoi, delega un altro iscritto.",
+    d: "Una volta saliti sul palco si resta fino al termine della manche, anche con l'auto ferma, per non interferire con chi sta correndo. I recuperi spettano ai piloti della manche appena conclusa; se non puoi, delega un altro iscritto. Chi scende dal palco prima della fine o non è in postazione di recupero perde la qualifica/finale migliore disputata.",
   },
   {
     n: "07",
     t: "Pista in gara",
     scope: "In gara",
-    d: "Durante le sessioni in pista entrano solo giuria e addetti ai recuperi: meno gente in mezzo, più sicurezza per tutti. E in gara, chi sta tirando il decimo del giro va lasciato passare con stile — il fair play è sempre il sorpasso più bello.",
+    d: "Durante le sessioni in pista entrano solo giuria e addetti ai recuperi. In gara i piloti più lenti agevolano i più veloci, senza ostacolare chi sta sopraggiungendo.",
   },
   {
     n: "08",
     t: "Iscrizione e giuria",
     scope: "In gara",
-    d: "Iscriversi a una gara significa anche accettare queste poche regole: niente di trascendentale, ma serve una base comune. Le decisioni della giuria sono definitive — non per imporre, ma per tenere le gare scorrevoli e tutti concentrati su quello che conta davvero: divertirsi correndo.",
+    d: "Iscriversi a una gara significa accettarne il regolamento: una base comune per tutti. Le decisioni della giuria sono definitive e servono a far svolgere le gare in modo ordinato.",
   },
 ];
 
@@ -68,10 +68,10 @@ const features = [
   { k: "Dimensione", v: "1000 m² · 3 aree box" },
   { k: "Ambiente", v: "Indoor" },
   { k: "Accesso", v: "Previo tesseramento + rispetto regolamento" },
-  { k: "Fondazione", v: "2018" },
+  { k: "Fondazione", v: "2010 · Team La Gang" },
   {
     k: "Categorie",
-    v: "Modificata · Stock 17.5 · GT · FWD · TT Club · Pancar 1/12 · GT12 & LMH",
+    v: "Modificata · Stock 17.5 · GT/LMH · FWD · Vaschetta · Pancar 1/12 · GT12 & LMH",
   },
 ];
 
@@ -87,8 +87,9 @@ export default function PistaPage() {
       <PageHero
         index="01"
         label="La pista"
-        title="RcLandia"
-        accent="è casa."
+        title="Benvenuti"
+        accent="in pista."
+        bgImage="/pista.jpg"
         subtitle="Pista indoor in moquette, tracciato permanente, 1000 m² su tre aree box. Aperta al pubblico tesserato: il posto dove ci si ritrova tra amici per guidare, gareggiare o semplicemente divertirsi."
       />
 
@@ -138,7 +139,7 @@ export default function PistaPage() {
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="text-display text-[clamp(2.5rem,7vw,7rem)] leading-[0.9]">
-              Quando si <span className="text-yellow">gira.</span>
+              Quando siamo <span className="text-yellow">aperti.</span>
             </h2>
           </Reveal>
 
@@ -163,7 +164,7 @@ export default function PistaPage() {
 
           <Reveal delay={0.1}>
             <p className="mt-8 text-sm text-ink-faint font-mono uppercase tracking-widest">
-              Stagione 2025/26 · giornate speciali e variazioni nelle news.
+              Stagione 2026/27 · giornate speciali e variazioni nelle news.
             </p>
           </Reveal>
         </div>
@@ -178,7 +179,7 @@ export default function PistaPage() {
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="text-display text-[clamp(2.5rem,7vw,7rem)] leading-[0.9]">
-              Il patto della <span className="text-red">pista.</span>
+              Le regole della <span className="text-red">pista.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
@@ -232,11 +233,18 @@ export default function PistaPage() {
           <Reveal delay={0.2}>
             <div className="mt-16 flex flex-wrap gap-4">
               <Link
-                href="/tesseramento"
-                data-cursor="iscriviti"
+                href="/stagione-2026-2027"
+                data-cursor="stagione"
                 className="inline-flex items-center gap-3 px-6 py-3 bg-yellow text-bg font-mono text-xs uppercase tracking-widest font-semibold"
               >
-                Tesseramento <span>→</span>
+                Stagione 2026/27 · costi gara <span>→</span>
+              </Link>
+              <Link
+                href="/tesseramento"
+                data-cursor="iscriviti"
+                className="inline-flex items-center gap-3 px-6 py-3 border border-white/30 font-mono text-xs uppercase tracking-widest hover:border-yellow hover:text-yellow transition-colors"
+              >
+                Tesseramento
               </Link>
               <Link
                 href="/contatti"

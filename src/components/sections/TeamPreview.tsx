@@ -88,9 +88,9 @@ export function TeamPreview({
                 04 · Team
               </div>
               <h2 className="text-display text-[clamp(2rem,5vw,5rem)] leading-[0.9]">
-                I piloti della
+                Il
                 <br />
-                <span className="text-red">Gang.</span>
+                <span className="text-red">team.</span>
               </h2>
             </div>
             <Link
@@ -138,14 +138,7 @@ export function TeamPreview({
                   </div>
                 )}
                 <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-between">
-                  <div className="flex justify-between items-start">
-                    {p.role ? (
-                      <span className="px-2 py-1 bg-yellow text-bg text-[10px] font-mono uppercase tracking-widest font-semibold">
-                        {p.role}
-                      </span>
-                    ) : (
-                      <span />
-                    )}
+                  <div className="flex justify-end items-start">
                     <span className="font-mono text-xs uppercase tracking-widest text-ink-dim">
                       #{p.num}
                     </span>
@@ -154,11 +147,6 @@ export function TeamPreview({
                     <div className="text-display text-2xl md:text-3xl leading-tight group-hover:text-yellow transition-colors">
                       {p.name}
                     </div>
-                    {p.cat && (
-                      <div className="text-xs font-mono uppercase tracking-widest text-red mt-1">
-                        {p.cat}
-                      </div>
-                    )}
                   </div>
                 </div>
                 <div className="absolute inset-x-0 bottom-0 h-1 bg-yellow origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />

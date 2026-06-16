@@ -93,7 +93,7 @@ export default async function EventiPage({
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="text-display text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] mb-12 md:mb-16">
-              Sul <span className="text-yellow">circuito.</span>
+              Le prossime <span className="text-yellow">gare.</span>
             </h2>
           </Reveal>
 
@@ -208,7 +208,7 @@ export default async function EventiPage({
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="text-display text-[clamp(2.5rem,7vw,7rem)] leading-[0.9]">
-              Chi tira il <span className="text-red">decimo.</span>
+              Le <span className="text-red">classifiche.</span>
             </h2>
           </Reveal>
 

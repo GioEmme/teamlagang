@@ -132,6 +132,39 @@ html.lenis body {
   }
 }
 
+/* Nav pulse highlight (Stagione 26/27) */
+@keyframes nav-pulse-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(255, 213, 0, 0);
+    border-color: rgba(255, 213, 0, 0.45);
+  }
+  50% {
+    box-shadow:
+      0 0 14px 0 rgba(255, 213, 0, 0.45),
+      0 0 28px 0 rgba(255, 213, 0, 0.18);
+    border-color: rgba(255, 213, 0, 0.9);
+  }
+}
+.nav-pulse {
+  animation: nav-pulse-glow 2.2s ease-in-out infinite;
+}
+@keyframes nav-dot-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.6);
+    opacity: 0.5;
+  }
+}
+.nav-dot-pulse {
+  animation: nav-dot-pulse 1.6s ease-in-out infinite;
+}
+
 /* Marquee */
 @keyframes marquee {
   from {

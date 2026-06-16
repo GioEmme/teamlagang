@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 type Props = {
   index: string;
@@ -9,6 +10,7 @@ type Props = {
   accent?: string;
   subtitle?: string;
   color?: "yellow" | "red" | "blue";
+  bgImage?: string;
 };
 
 export function PageHero({
@@ -18,6 +20,7 @@ export function PageHero({
   accent,
   subtitle,
   color = "yellow",
+  bgImage,
 }: Props) {
   const colorClass =
     color === "yellow"
@@ -28,6 +31,21 @@ export function PageHero({
 
   return (
     <section className="relative pt-40 md:pt-52 pb-20 md:pb-32 overflow-hidden bg-bg">
+      {bgImage ? (
+        <>
+          <Image
+            src={bgImage}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+            aria-hidden
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-bg/80 via-bg/55 to-bg pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-bg/70 via-bg/20 to-bg/40 pointer-events-none" />
+        </>
+      ) : null}
       <div className="absolute inset-0 opacity-[0.04] pointer-events-none checker" />
 
       <div className="relative mx-auto max-w-[1600px] px-5 md:px-10">

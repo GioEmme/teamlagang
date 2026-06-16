@@ -83,7 +83,7 @@ export function IntroManifesto({ image }: { image?: string | null }) {
             </h2>
 
             <div className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
-              <Stat k="2018" v="Fondazione" />
+              <Stat k="2010" v="Team La Gang · RcLandia" />
               <Stat k="7" v="Categorie attive" />
               <Stat k="1000m²" v="Pista indoor" />
               <Stat k="~100" v="Piloti · 3 aree box" />

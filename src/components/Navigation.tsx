@@ -84,6 +84,25 @@ export function Navigation() {
           <nav className="hidden lg:flex items-center gap-1">
             {site.nav.map((item) => {
               const active = pathname === item.href;
+              const pulse = "pulse" in item && item.pulse;
+              if (pulse) {
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    data-cursor="stagione"
+                    className={cn(
+                      "nav-pulse relative mx-1.5 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm uppercase tracking-widest font-mono font-semibold transition-colors",
+                      active
+                        ? "text-yellow border-yellow bg-yellow/10"
+                        : "text-yellow border-yellow/45 hover:bg-yellow/10",
+                    )}
+                  >
+                    <span className="nav-dot-pulse w-1.5 h-1.5 rounded-full bg-yellow" />
+                    {item.label}
+                  </Link>
+                );
+              }
               return (
                 <Link
                   key={item.href}
@@ -174,28 +193,40 @@ export function Navigation() {
             className="fixed inset-0 z-40 bg-bg/95 backdrop-blur-xl lg:hidden pt-20 px-6"
           >
             <nav className="flex flex-col pt-4">
-              {site.nav.map((item, i) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 * i, ease: [0.16, 1, 0.3, 1] }}
-                  className="border-b border-white/10"
-                >
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      "flex items-center justify-between py-5 text-display text-4xl",
-                      pathname === item.href ? "text-yellow" : "text-ink",
-                    )}
+              {site.nav.map((item, i) => {
+                const pulse = "pulse" in item && item.pulse;
+                return (
+                  <motion.div
+                    key={item.href}
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 * i, ease: [0.16, 1, 0.3, 1] }}
+                    className="border-b border-white/10"
                   >
-                    {item.label}
-                    <span className="text-ink-dim font-mono text-xs">
-                      0{i + 1}
-                    </span>
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        "flex items-center justify-between py-5 text-display text-4xl",
+                        pulse
+                          ? "text-yellow"
+                          : pathname === item.href
+                            ? "text-yellow"
+                            : "text-ink",
+                      )}
+                    >
+                      <span className="flex items-center gap-3">
+                        {pulse && (
+                          <span className="nav-dot-pulse w-2.5 h-2.5 rounded-full bg-yellow" />
+                        )}
+                        {item.label}
+                      </span>
+                      <span className="text-ink-dim font-mono text-xs">
+                        0{i + 1}
+                      </span>
+                    </Link>
+                  </motion.div>
+                );
+              })}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

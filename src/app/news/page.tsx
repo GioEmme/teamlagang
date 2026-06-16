@@ -32,10 +32,10 @@ export default async function NewsPage() {
       <PageHero
         index="05"
         label="News"
-        title="Dal"
-        accent="box."
+        title="Le"
+        accent="news."
         color="yellow"
-        subtitle="Ultime gare, aggiornamenti pista, racconti dal paddock. Il cronometro parla, ma anche il box ha cose da dire."
+        subtitle="Risultati delle gare, aggiornamenti sulla pista ed eventi a RcLandia."
       />
 
       <section className="relative py-16 md:py-24 bg-bg">
@@ -47,16 +47,14 @@ export default async function NewsPage() {
               </div>
               <div className="relative max-w-2xl mx-auto text-center">
                 <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-yellow mb-4">
-                  Box silenzioso · Per ora
+                  Box silenzioso · per ora
                 </div>
                 <h2 className="text-display text-[clamp(2rem,5vw,4rem)] leading-tight mb-5">
-                  Le storie stanno{" "}
-                  <span className="text-yellow">scaldando le gomme.</span>
+                  Ancora <span className="text-yellow">nessuna news.</span>
                 </h2>
                 <p className="text-ink-dim text-base md:text-lg leading-relaxed">
-                  Ancora niente cronaca da raccontare, ma la pista non dorme
-                  mai. Le prime news arrivano direttamente dal paddock —
-                  ripassa fra qualche giorno.
+                  Non ci sono ancora news pubblicate. Torna a trovarci: gli
+                  aggiornamenti dalla pista arrivano qui.
                 </p>
                 <Link
                   href="/eventi"

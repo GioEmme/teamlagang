@@ -66,78 +66,76 @@ export function HeroCarousel({ images }: Props) {
             A.S. Team La Gang presenta
           </motion.div>
 
-          <div className="mx-auto max-w-[1600px] w-full px-5 md:px-10 mt-4 md:mt-6">
-            <h1 className="text-display leading-[0.85] text-[clamp(4.5rem,16vw,12rem)]">
-              <span className="block overflow-hidden">
-                <motion.span
-                  initial={{ y: "110%" }}
-                  animate={{ y: "0%" }}
-                  transition={{
-                    duration: 1.2,
-                    delay: 0.4,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  className="block"
-                >
-                  RcLandia
-                </motion.span>
-              </span>
-              <span className="block overflow-hidden">
-                <motion.span
-                  initial={{ y: "110%" }}
-                  animate={{ y: "0%" }}
-                  transition={{
-                    duration: 1.2,
-                    delay: 0.55,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  className="block text-transparent [-webkit-text-stroke:1px_#ffd500] md:[-webkit-text-stroke:2px_#ffd500]"
-                >
-                  Pista RC
-                </motion.span>
-              </span>
-            </h1>
-          </div>
-
           <div className="mx-auto max-w-[1600px] w-full px-5 md:px-10 mt-auto">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-end">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.8 }}
-                className="md:col-span-5 text-ink md:text-ink-dim leading-relaxed max-w-md"
-              >
-                Moquette sotto le ruote. Gomme calde. Radiocomandi alla mano.
-                RcLandia è la pista indoor del Team La Gang, aperta a chiunque
-                voglia provare l&apos;ebbrezza della guida RC e divertirsi in
-                avvincenti gare tra amici, in un ambiente rilassato dove si
-                corre prima per passione. Gareggiare non è un obbligo: la pista
-                è aperta a chi ha voglia di divertirsi.
-              </motion.p>
+              <h1 className="md:col-span-7 text-display leading-[0.85] text-[clamp(3rem,9vw,8rem)]">
+                <span className="block overflow-hidden">
+                  <motion.span
+                    initial={{ y: "110%" }}
+                    animate={{ y: "0%" }}
+                    transition={{
+                      duration: 1.2,
+                      delay: 0.4,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className="block"
+                  >
+                    RcLandia
+                  </motion.span>
+                </span>
+                <span className="block overflow-hidden">
+                  <motion.span
+                    initial={{ y: "110%" }}
+                    animate={{ y: "0%" }}
+                    transition={{
+                      duration: 1.2,
+                      delay: 0.55,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className="block text-transparent [-webkit-text-stroke:1px_#ffd500] md:[-webkit-text-stroke:2px_#ffd500]"
+                  >
+                    Pista RC
+                  </motion.span>
+                </span>
+              </h1>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.05, duration: 0.8 }}
-                className="md:col-span-4 md:col-start-9 flex flex-wrap gap-3 md:justify-end"
-              >
-                <Link
-                  href="/pista"
-                  data-cursor="esplora"
-                  className="group relative inline-flex items-center gap-3 px-6 py-3 bg-yellow text-bg font-mono text-xs uppercase tracking-widest font-semibold overflow-hidden"
+              <div className="md:col-span-5 flex flex-col gap-6 md:gap-8">
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.9, duration: 0.8 }}
+                  className="text-ink leading-relaxed max-w-md border-l-2 border-yellow/70 pl-4 md:pl-5 [text-shadow:0_1px_10px_rgb(0_0_0/0.95),0_0_3px_rgb(0_0_0/0.8)]"
                 >
-                  <span className="relative z-10">Scopri la pista</span>
-                  <span className="relative z-10">→</span>
-                  <span className="absolute inset-0 bg-yellow-hot -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-                </Link>
-                <Link
-                  href="/tesseramento"
-                  data-cursor="iscrizione"
-                  className="inline-flex items-center gap-3 px-6 py-3 border border-white/30 font-mono text-xs uppercase tracking-widest hover:border-yellow hover:text-yellow transition-colors"
+                  RcLandia è la pista RC indoor del Team La Gang, a Scandiano.
+                  Tracciato permanente in moquette, aperto a tutti i tesserati:
+                  a chi vuole gareggiare e a chi vuole semplicemente girare e
+                  divertirsi. Qui si corre prima di tutto per passione.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.05, duration: 0.8 }}
+                  className="flex flex-wrap gap-3"
                 >
-                  Tesseramento
-                </Link>
-              </motion.div>
+                  <Link
+                    href="/pista"
+                    data-cursor="esplora"
+                    className="group relative inline-flex items-center gap-3 px-6 py-3 bg-yellow text-bg font-mono text-xs uppercase tracking-widest font-semibold overflow-hidden"
+                  >
+                    <span className="relative z-10">Scopri la pista</span>
+                    <span className="relative z-10">→</span>
+                    <span className="absolute inset-0 bg-yellow-hot -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+                  </Link>
+                  <Link
+                    href="/tesseramento"
+                    data-cursor="iscrizione"
+                    className="inline-flex items-center gap-3 px-6 py-3 border border-white/30 font-mono text-xs uppercase tracking-widest hover:border-yellow hover:text-yellow transition-colors"
+                  >
+                    Tesseramento
+                  </Link>
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>

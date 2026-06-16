@@ -6,7 +6,7 @@ import { getTeamImages } from "@/lib/teamImages";
 
 export const metadata: Metadata = {
   title: "Team",
-  description: "I piloti di A.S. Team La Gang.",
+  description: "Team La Gang e RcLandia sono una cosa sola: il team dietro la pista RC indoor di Scandiano.",
 };
 
 const pilots = [
@@ -29,10 +29,10 @@ export default function TeamPage() {
       <PageHero
         index="02"
         label="Team"
-        title="La Gang"
-        accent="al completo."
+        title="Il"
+        accent="team."
         color="red"
-        subtitle="Il direttivo del Team La Gang: le persone che tengono viva RcLandia. Pista, gare, calendario, accoglienza — settimana dopo settimana, dietro le quinte e in prima linea."
+        subtitle="Team La Gang e RcLandia sono una cosa sola: non c'è pista senza il team, non c'è team senza la pista. Le persone dietro gare, calendario e accoglienza, settimana dopo settimana."
       />
 
       <section className="relative py-20 md:py-32 bg-bg">
@@ -65,10 +65,7 @@ export default function TeamPage() {
                     </div>
                   )}
                   <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between">
-                    <div className="flex justify-between items-start">
-                      <span className="px-2 py-1 bg-yellow text-bg text-[10px] font-mono uppercase tracking-widest font-semibold">
-                        {p.role}
-                      </span>
+                    <div className="flex justify-end items-start">
                       <span className="font-mono text-xs uppercase tracking-widest text-ink-dim">
                         #{p.num}
                       </span>
@@ -77,12 +74,6 @@ export default function TeamPage() {
                       <div className="text-display text-3xl md:text-4xl leading-tight group-hover:text-yellow transition-colors">
                         {p.name}
                       </div>
-                      <div className="text-xs font-mono uppercase tracking-widest text-red mt-2">
-                        {p.cat}
-                      </div>
-                      <p className="text-sm text-ink-dim mt-3 leading-relaxed">
-                        {p.bio}
-                      </p>
                     </div>
                   </div>
                 </article>

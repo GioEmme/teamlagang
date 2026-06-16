@@ -13,22 +13,22 @@ const benefits = [
   {
     n: "01",
     t: "Pista a tua disposizione",
-    d: "Moquette sempre \"calda\" e pista sempre pronta! La pista è tua tutto il giorno: imposta il setup con calma, gira finché ne hai voglia, torna a casa solo quando l'auto è perfetta.",
+    d: "Pista sempre pronta e a tua disposizione per tutto il giorno: imposta il setup con calma, gira quanto vuoi e vai via solo quando l'auto è a posto.",
   },
   {
     n: "02",
     t: "Postazioni dedicate",
-    d: "Tre aree box organizzate, un tavolo pilota per ogni postazione: monti, smonti, carichi al tuo tavolo, tutto a portata di mano. Niente spazi di fortuna, niente lavorare in piedi su una sedia.",
+    d: "Tre aree box organizzate, un tavolo pilota per ogni postazione: monti, smonti e carichi al tuo tavolo, con tutto a portata di mano. Niente spazi di fortuna.",
   },
   {
     n: "03",
     t: "Cronometraggio professionale",
-    d: "Sistema di cronometraggio sempre attivo durante le sessioni libere. Vedi i tuoi tempi, confronta i giri, capisci dove migliorare. Non è solo girare, è capire cosa fare diversamente al prossimo passaggio.",
+    d: "Sistema di cronometraggio sempre attivo durante le sessioni libere: vedi i tuoi tempi, confronti i giri e capisci dove migliorare.",
   },
   {
     n: "04",
     t: "Una community vera",
-    d: "Non sei solo. Trovi sempre qualcuno disponibile a darti una mano per setup, riparazioni, consigli. La Gang è quella roba lì: rivali in pista, amici tra una manche e l'altra.",
+    d: "Rivali in pista, amici tra una manche e l'altra: qui trovi sempre qualcuno pronto a darti una mano per setup, riparazioni e consigli.",
   },
 ];
 
@@ -46,7 +46,7 @@ const steps = [
   {
     n: "03",
     t: "Si parte",
-    d: "Tessera, primo accesso, e da quel momento è anche casa tua.",
+    d: "Tessera, primo accesso, e da quel momento la pista è anche tua.",
   },
 ];
 
@@ -59,7 +59,7 @@ export default function TesseramentoPage() {
         title="Una tessera,"
         accent="tutta la pista."
         color="yellow"
-        subtitle="Per correre, anche solo per divertimento, basta poco. Una tessera annuale, costi onesti, regole chiare. Niente sorprese — solo pista, box e tempo da limare."
+        subtitle="Per correre, anche solo per divertimento, basta poco. Una tessera annuale, costi onesti, regole chiare. Niente sorprese — solo pista, box e tempo per girare."
       />
 
       {/* ---------- Pricing cards ---------- */}
@@ -72,9 +72,9 @@ export default function TesseramentoPage() {
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="text-display text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] mb-12 md:mb-20">
-              Trasparente
+              Costi chiari,
               <br />
-              come una <span className="text-yellow">linea di gara.</span>
+              nessuna <span className="text-yellow">sorpresa.</span>
             </h2>
           </Reveal>
 
@@ -201,13 +201,12 @@ export default function TesseramentoPage() {
                 </span>
                 <p className="text-sm md:text-base text-ink-dim leading-relaxed">
                   La pista è aperta{" "}
-                  <span className="text-ink">da settembre a giugno</span>.
-                  Luglio e agosto restiamo chiusi al pubblico — non perché siamo
-                  in ferie, anzi: è il momento in cui il direttivo si rimbocca
-                  le maniche il doppio. Manutenzione pista, moquette,
-                  illuminazione, qualche miglioria tenuta nascosta fino a
-                  settembre. Quando si riapre, ti accoglie una pista riposata
-                  e — di solito — qualche sorpresa.
+                  <span className="text-ink">da settembre a giugno</span>. A
+                  luglio e agosto restiamo chiusi al pubblico, ma non in ferie:
+                  è il periodo in cui il direttivo lavora di più, tra
+                  manutenzione della pista, moquette, illuminazione e qualche
+                  miglioria. Alla riapertura trovi una pista rimessa a punto e,
+                  di solito, qualche novità.
                 </p>
               </div>
             </div>
@@ -295,9 +294,9 @@ export default function TesseramentoPage() {
               </Reveal>
               <Reveal delay={0.05}>
                 <h2 className="text-display text-[clamp(2.5rem,8vw,8rem)] leading-[0.85]">
-                  Una mail,
+                  Una mail
                   <br />
-                  e sei dei <span className="text-bg/30">nostri.</span>
+                  e si <span className="text-bg/30">parte.</span>
                 </h2>
               </Reveal>
             </div>

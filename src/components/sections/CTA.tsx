@@ -27,9 +27,9 @@ export function CTA() {
 
         <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
           <p className="md:col-span-5 text-bg/80 text-lg leading-relaxed max-w-md">
-            Tesseramento aperto da settembre a giugno. Porta la tua RC, rispetta
-            le regole della pista, lima i decimi giro dopo giro. Il resto viene
-            da solo.
+            Il tesseramento è aperto tutto l&apos;anno. Porta la tua RC,
+            rispetta il regolamento della pista e gira quando vuoi — in gara o
+            in sessione libera. La pista fa una pausa solo a luglio e agosto.
           </p>
           <div className="md:col-span-4 md:col-start-9 flex flex-wrap gap-3 md:justify-end">
             <Link
@@ -52,7 +52,7 @@ export function CTA() {
 
       <div className="relative mt-20 md:mt-32 border-y-2 border-bg py-4">
         <Marquee speed={22}>
-          {["Team La Gang", "★", "RcLandia", "★", "Since 2018", "★"].map(
+          {["Team La Gang", "★", "RcLandia", "★", "Since 2010", "★"].map(
             (w, i) => (
               <span
                 key={i}

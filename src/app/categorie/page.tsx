@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Categorie",
   description:
-    "Le categorie RC di RcLandia: Touring 1/10 Modificata/Stock/GT, FWD, TT Club, Pancar 1/12 Open e GT12/LMH.",
+    "Le categorie RC di RcLandia, regolamento tecnico 2026/27: Touring 1/10 Modificata/Stock/GT-LMH, FWD, Vaschetta, Pan car 1/12 e GT12/LMH.",
 };
 
 const SPEC_LABELS: Record<keyof (typeof site.categories)[number]["specs"], string> = {
@@ -41,7 +41,7 @@ export default function CategoriePage() {
         label="Categorie"
         title="Sette"
         accent="discipline."
-        subtitle="Dalla scuola TT Club alla modificata open. Dalla pura Pancar 1/12 al GT12. Ogni classe ha un suo linguaggio, un suo ritmo, un suo regolamento — qui trovi tutto."
+        subtitle="Sette categorie, dalle classi a motore controllato fino alla Modificata a motore e regolatore liberi. Touring 1/10 e Pancar 1/12, ognuna con il suo regolamento tecnico 2026/27 — qui trovi tutte le specifiche."
       />
 
       <section className="relative pb-20 md:pb-32 bg-bg">
@@ -132,6 +132,10 @@ export default function CategoriePage() {
                 e calandre, modelli sprovvisti non possono partecipare.
               </li>
               <li>
+                <span className="text-ink">Gomme Stock e Modificata:</span>{" "}
+                Team La Gang Carpet. FWD, GT/LMH e TT: Ride 26073W.
+              </li>
+              <li>
                 <span className="text-ink">Gomme in lattice:</span> obbligo
                 di acquisto in pista per lo svolgimento della gara.
               </li>
@@ -145,7 +149,13 @@ export default function CategoriePage() {
               </li>
               <li>
                 <span className="text-ink">Regolamento completo:</span>{" "}
-                Italian Indoor Series 2025/26, in vigore a RcLandia.
+                <a
+                  href="/stagione-2026-2027"
+                  className="text-yellow hover:text-yellow-hot underline underline-offset-4"
+                >
+                  Italian Indoor Series 2026/27
+                </a>
+                , in vigore a RcLandia.
               </li>
             </ul>
           </div>

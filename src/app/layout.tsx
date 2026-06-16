@@ -44,7 +44,8 @@ export const metadata: Metadata = {
     "Team La Gang",
     "1/10 touring",
     "1/12 pancar",
-    "TT02",
+    "vaschetta",
+    "Italian Indoor Series",
   ],
   openGraph: {
     title: `${site.name} — ${site.track}`,

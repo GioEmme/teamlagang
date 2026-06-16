@@ -17,7 +17,7 @@ export default function ContattiPage() {
         index="06"
         label="Contatti"
         title="Scrivici"
-        accent="in pit."
+        accent="in pista."
         color="red"
         subtitle="Una mail, un messaggio, oppure passaci a trovare in pista. La Gang risponde."
       />

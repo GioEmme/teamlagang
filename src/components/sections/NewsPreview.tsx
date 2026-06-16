@@ -30,9 +30,9 @@ export async function NewsPreview() {
               05 · News
             </div>
             <h2 className="text-display text-[clamp(2.4rem,6vw,6rem)] leading-[0.9]">
-              Ultime dal
+              Ultime
               <br />
-              <span className="text-yellow">box.</span>
+              <span className="text-yellow">news.</span>
             </h2>
           </div>
           {!isEmpty && (
@@ -54,16 +54,14 @@ export async function NewsPreview() {
               </div>
               <div className="relative max-w-2xl">
                 <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-yellow mb-4">
-                  Stand-by · Box silenzioso
+                  Box silenzioso · per ora
                 </div>
                 <h3 className="text-display text-[clamp(1.8rem,4vw,3.4rem)] leading-tight mb-5">
-                  Le storie stanno{" "}
-                  <span className="text-yellow">scaldando le gomme.</span>
+                  Ancora <span className="text-yellow">nessuna news.</span>
                 </h3>
                 <p className="text-ink-dim text-base md:text-lg leading-relaxed">
-                  Ancora niente cronaca da raccontare, ma la pista non dorme
-                  mai. Torna presto: le prime news arrivano direttamente dal
-                  paddock.
+                  Non ci sono ancora news pubblicate. Torna a trovarci: gli
+                  aggiornamenti dalla pista arrivano qui.
                 </p>
                 <Link
                   href="/eventi"

@@ -56,7 +56,7 @@ export function ContactForm() {
       <Field
         label="Categoria di interesse"
         name="category"
-        placeholder="Es. 1/10 Stock, TT Club, GT12…"
+        placeholder="Es. 1/10 Stock, Vaschetta, GT12…"
         error={fieldErrors.category?.[0]}
       />
       <TextArea
