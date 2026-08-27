@@ -169,7 +169,7 @@ export const site = {
       { date: "15 Novembre 2026", title: "2ª Prova Italian Indoor Series ’26/27", round: 2, iis: true },
       { date: "6 Dicembre 2026", title: "3ª Prova Italian Indoor Series ’26/27", round: 3, iis: true },
       { date: "20 Dicembre 2026", title: "Trofeo Schumacher" },
-      { date: "17/18 Gennaio 2027", title: "Charity Race ’27", charity: true },
+      { date: "16/17 Gennaio 2027", title: "Charity Race ’27", charity: true },
       { date: "7 Febbraio 2027", title: "4ª Prova Italian Indoor Series ’26/27", round: 4, iis: true },
       { date: "28 Febbraio 2027", title: "Gara titolata", note: "in via di definizione" },
       { date: "21 Marzo 2027", title: "5ª Prova Italian Indoor Series ’26/27", round: 5, iis: true },
