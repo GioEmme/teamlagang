@@ -4,12 +4,17 @@ TEAM PILOT IMAGES — public/team/
 Una foto per pilota. Nome file = numero di gara del pilota.
 
 Piloti attuali (vedi src/app/team/page.tsx):
-  07.jpg    → Pilota 01 (Capitano, 1/10 Touring Mod)
-  12.jpg    → Pilota 02 (Veterano, 1/12 Pancar)
-  24.jpg    → Pilota 03 (Racing, Touring Stock)
-  33.jpg    → Pilota 04 (Rookie, TT02)
-  45.jpg    → Pilota 05 (Racing, 1/10 FWD)
-  56.jpg    → Pilota 06 (Racing, 1/12 GT)
+  01.jpg    -> Alberto Montecchi
+  02.jpg    -> Isacco Fornaciari
+  03.jpg    -> Alberto Spadoni
+  04.jpg    -> Roberto Petazzoni
+  05.jpg    -> Alessandro Davoli
+  06.jpg    -> Alessandro Lonardi
+  07.jpg    -> Danilo Donadelli
+  08.jpg    -> Enrico Rabitti
+  09.jpg    -> Giovanni Mauramati
+
+Non tutte le foto sono presenti: se manca, resta il fallback col numero grande.
 
 Formati accettati: .jpg, .jpeg, .png, .webp, .avif
 Dimensione consigliata: 1200x1600 px (ratio 3:4 verticale), < 400 KB
