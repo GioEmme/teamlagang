@@ -161,7 +161,7 @@ export default function Stagione2627Page() {
             {season.calendar.map((e, i) => {
               const isIis = "iis" in e && e.iis;
               const round = "round" in e ? e.round : null;
-              const note = "note" in e ? e.note : null;
+              const note: string | null = "note" in e ? String(e.note) : null;
               const isCharity = "charity" in e && e.charity;
 
               if (isCharity) {
