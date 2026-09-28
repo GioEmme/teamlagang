@@ -171,7 +171,7 @@ export const site = {
       { date: "20 Dicembre 2026", title: "Trofeo Schumacher" },
       { date: "16/17 Gennaio 2027", title: "Charity Race ’27", charity: true },
       { date: "7 Febbraio 2027", title: "4ª Prova Italian Indoor Series ’26/27", round: 4, iis: true },
-      { date: "28 Febbraio 2027", title: "Campionato Italiano Indoor - ACI" },
+      { date: "28 Febbraio 2027", title: "Campionato Italiano Indoor - ACI", label: "Gara titolata" },
       { date: "21 Marzo 2027", title: "5ª Prova Italian Indoor Series ’26/27", round: 5, iis: true },
     ],
     fees: { oneClass: 30, twoClasses: 40, lateSurcharge: 10 },

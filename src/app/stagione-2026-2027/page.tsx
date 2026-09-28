@@ -162,6 +162,7 @@ export default function Stagione2627Page() {
               const isIis = "iis" in e && e.iis;
               const round = "round" in e ? e.round : null;
               const note: string | null = "note" in e ? String(e.note) : null;
+              const label: string | null = "label" in e ? String(e.label) : null;
               const isCharity = "charity" in e && e.charity;
 
               if (isCharity) {
@@ -239,7 +240,7 @@ export default function Stagione2627Page() {
                             : "text-ink-faint border-white/15 bg-white/[0.02]")
                         }
                       >
-                        {isIis ? `Round ${round}` : "Trofeo"}
+                        {isIis ? `Round ${round}` : (label ?? "Trofeo")}
                       </span>
                     </div>
                     <time className="col-span-12 md:col-span-3 font-mono text-sm text-yellow self-center">
