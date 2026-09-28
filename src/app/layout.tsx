@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Anton, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
-import { CustomCursor } from "@/components/CustomCursor";
 import { SiteChrome } from "@/components/SiteChrome";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -84,7 +83,6 @@ export default async function RootLayout({
       <body className="bg-bg text-ink antialiased">
         <div className="grain" aria-hidden />
         <SmoothScroll>
-          <CustomCursor />
           <SiteChrome
             nav={<Navigation />}
             rails={

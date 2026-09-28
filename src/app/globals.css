@@ -114,12 +114,6 @@ html.lenis body {
     0 0 60px rgba(230, 57, 70, 0.15);
 }
 
-/* Hide native cursor when custom cursor active */
-.has-custom-cursor,
-.has-custom-cursor * {
-  cursor: none !important;
-}
-
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
