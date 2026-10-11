@@ -98,7 +98,7 @@ export const site = {
       short: "Vaschetta",
       blurb: "Telaio a vaschetta e cardano. Semplice ed economica, per chi inizia.",
       description:
-        "Telaio 1/10 a vaschetta in plastica e trasmissione a cardano, con combo motore-regolatore Hobbywing Justock 17.5T obbligata e rapporto minimo di 5 (5.1 sì, 4.9 no). Una classe semplice ed economica, pensata per chi vuole iniziare a gareggiare senza spendere troppo: componenti standard e nessuna corsa al setup. Carrozzerie GT ispirate ad auto reali da competizione.",
+        "Telaio 1/10 a vaschetta in plastica e trasmissione a cardano, con combo motore-regolatore Hobbywing Justock 17.5T e rapporto minimo di 5 (5.1 sì, 4.9 no). Una classe semplice ed economica, pensata per chi vuole iniziare a gareggiare senza spendere troppo: componenti standard e nessuna corsa al setup. Carrozzerie GT ispirate ad auto reali da competizione.",
       specs: {
         scale: "1/10",
         drivetrain: "Telaio a vaschetta, trasmissione a cardano",
