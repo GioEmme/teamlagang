@@ -102,7 +102,7 @@ export const site = {
       specs: {
         scale: "1/10",
         drivetrain: "Telaio a vaschetta, trasmissione a cardano",
-        motor: "Hobbywing Justock 3650 G2/G2.1",
+        motor: "Hobbywing Justock 3650 G2/G2.1 17.5T",
         esc: "Hobbywing Justock XR10 G3-G3S, no timing",
         ratio: "Minimo 5",
         battery: "Hardcase 2S, max 8,4V",
