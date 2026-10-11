@@ -108,7 +108,7 @@ export const site = {
         battery: "Hardcase 2S, max 8,4V",
         body: "GT che riproducono auto reali da competizione",
         tires: "Da regolamento in pista",
-        weight: "1400 g",
+        weight: "1360 g",
       },
     },
     {
