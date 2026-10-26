@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Rampini contro Montecchi: il racconto della 1/12 LMH alla 2ª prova Italian Indoor Series 26/27 a RcLandia Scandiano.">
+<meta property="og:title" content="1/12 LMH Scandiano · Rampini contro Montecchi">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://teamlagang.it/articoli/iis-2026-r2-lmh/index.html">
+<meta property="og:image" content="https://teamlagang.it/articoli/iis-2026-r2-lmh/clips/podio.jpg">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>1/12 LMH Scandiano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: colonna di lettura unica, racconto di gara; i clip escono come "monitor" del box, i cordoli gialli/neri della pista come unico segno grafico */
+:root{
+  --bg:#f6f6f2; --ink:#1d2026; --muted:#5d636d; --rule:#d9dad3;
+  --kerb:#e2a900; --kerb-ink:#8a6400; --asphalt:#24272d;
+  --f-display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#17191d; --ink:#e9e8e3; --muted:#a2a6ad; --rule:#33363d;
+  --kerb:#f0bc1c; --kerb-ink:#f0bc1c; --asphalt:#0f1013; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17191d; --ink:#e9e8e3; --muted:#a2a6ad; --rule:#33363d;
+  --kerb:#f0bc1c; --kerb-ink:#f0bc1c; --asphalt:#0f1013; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:1.1rem;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:44rem;margin:0 auto;padding-block:2.5rem 4rem;display:flex;flex-direction:column;gap:2.5rem}
+h1,h2{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.05}
+p{margin:0}
+
+header{display:flex;flex-direction:column;gap:.9rem;padding-bottom:1.6rem;
+  border-bottom:6px solid transparent;border-image:repeating-linear-gradient(90deg,var(--kerb) 0 28px,var(--ink) 28px 56px) 6}
+.eyebrow{font-family:var(--f-display);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.95rem;color:var(--kerb-ink)}
+h1{font-size:clamp(2.5rem,8vw,4.1rem);font-weight:800;text-transform:uppercase;letter-spacing:.01em}
+.dek{font-size:1.22rem;font-style:italic;color:var(--muted);max-width:38rem}
+.meta{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;font-family:var(--f-display);font-weight:500;font-size:1.05rem;letter-spacing:.03em;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:700}
+
+section{display:flex;flex-direction:column;gap:1.1rem}
+h2{font-size:2rem;font-weight:800;text-transform:uppercase}
+.kicker{font-family:var(--f-display);font-weight:600;font-size:1.1rem;letter-spacing:.03em;color:var(--kerb-ink);margin-top:-.6rem}
+
+figure.clip{margin:.3rem 0;background:var(--asphalt);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+figure.clip video{display:block;width:100%;max-width:100%;aspect-ratio:16/9;background:#000;object-fit:cover}
+figure.clip figcaption{display:flex;flex-direction:column;gap:.15rem;padding:.75rem 1rem .85rem;color:#e9e8e3;font-family:var(--f-display);font-size:1.05rem;letter-spacing:.02em;line-height:1.35}
+figure.clip .who{font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#f0bc1c;font-size:.9rem}
+figure.clip.duel .who::before{content:"Rampini – Montecchi · ";color:#e9e8e3}
+figure.clip .src{font-size:.85rem;color:#9ea2a9}
+
+/* esito */
+.result{display:flex;flex-direction:column;gap:1.4rem;padding-top:1.6rem;
+  border-top:6px solid transparent;border-image:repeating-linear-gradient(90deg,var(--kerb) 0 28px,var(--ink) 28px 56px) 6}
+.pole{font-family:var(--f-display);font-size:1.25rem;letter-spacing:.03em}
+.pole span{font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--kerb-ink);margin-right:.6rem;font-size:1rem}
+.podium{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;align-items:end}
+.podium li{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:.35rem;text-align:center;font-family:var(--f-display)}
+.podium .name{font-weight:700;font-size:1.2rem;line-height:1.1;min-width:0}
+.podium .step{width:100%;border-radius:4px 4px 0 0;background:var(--ink);color:var(--bg);font-weight:800;font-size:1.9rem;display:flex;align-items:flex-start;justify-content:center;padding-top:.3rem}
+.podium .p1 .step{height:6.5rem;background:var(--kerb);color:#1d2026}
+.podium .p2 .step{height:5rem}
+.podium .p3 .step{height:3.8rem}
+figure.photo{margin:0;border-radius:6px;overflow:hidden}
+figure.photo img{display:block;width:100%;max-width:100%;height:auto}
+.others{font-size:.92rem;color:var(--muted)}
+footer{font-size:.88rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:1.2rem}
+</style>
+</head>
+<body>
+
+<main>
+<header>
+  <div class="eyebrow">Italian Indoor Series 26/27 · 2ª prova · 1/12 LMH</div>
+  <h1>Rampini contro Montecchi</h1>
+  <p class="dek">A RcLandia la storica sfida della 1/12 LMH si gioca in tre atti, tra contatti, sorpassi all'ultimo respiro e una macchina a ruote all'aria. Alla fine i due lasciano Scandiano appaiati in testa al campionato.</p>
+  <div class="meta"><span><b>Sabato 25 ottobre 2026</b></span><span>RcLandia, Scandiano (RE)</span></div>
+</header>
+
+<section>
+  <p>Due settimane prima, alla prima prova, Montecchi si era preso la pole e Rampini la vittoria. A Scandiano i ruoli si invertono quasi alla lettera, come se i due si fossero dati appuntamento per rimettere tutto in pari.</p>
+</section>
+
+<section>
+  <h2>Prove e qualifiche</h2>
+  <p class="kicker">La mattina di Rampini</p>
+  <p>Nelle prove libere il cronometro sorride a Mauramati, il più rapido del turno davanti a Rampini e Sandonini. È però solo un assaggio, perché appena le qualifiche entrano nel vivo la scena se la prende Rampini.</p>
+  <p>La prima manche la vince lui, con Sandonini a ruota e Montecchi terzo, ancora alla ricerca del passo giusto. Nella seconda Montecchi si scuote e sale secondo, ma Rampini resta davanti. Nella terza Montecchi scivola di nuovo indietro, superato da Sandonini e da una Fenili in crescita, mentre Rampini mette in fila la terza vittoria. Nella quarta e ultima manche arriva il poker: Rampini vince ancora, Montecchi chiude secondo e si assicura il posto accanto a lui in prima fila.</p>
+  <p>Più indietro va in scena un duello tutto suo, quello tra Caraffi e Geti, che manche dopo manche si contendono le ultime due piazze della griglia. Quasi sempre la spunta Caraffi, ma Geti non molla mai.</p>
+  <p>La griglia delle finali vede Rampini in pole, poi Montecchi, Sandonini, Fenili e Mauramati. Il pomeriggio però racconterà un'altra storia.</p>
+</section>
+
+<section>
+  <h2>Finale 1</h2>
+  <p class="kicker">La rimonta di Rampini</p>
+  <p>La prima finale si accende prima ancora di cominciare davvero. Alla prima curva Montecchi cerca l'interno, sale sull'isola e, rientrando, finisce addosso a Rampini. Il poleman perde slancio sul cordolo e Sandonini, che arriva lanciato, non si fa pregare: passa all'interno e si prende la testa della corsa. Per Montecchi la finale dura appena un giro, poi la sua macchina si ferma. Ancora peggio va a Caraffi, la cui gara finisce praticamente al semaforo verde, e anche Geti si fermerà dopo pochi giri.</p>
+  <figure class="clip duel">
+    <video src="clips/f1-rampini-montecchi.mp4" poster="clips/f1-rampini-montecchi.jpg" autoplay muted loop playsinline controls preload="metadata"></video>
+    <figcaption><span class="who">Finale 1, il via</span><span>Montecchi sale sull'isola, rientra e tocca Rampini. Sandonini passa.</span><span class="src">Video pullstart.tv</span></figcaption>
+  </figure>
+  <p>Da lì comincia una caccia lunga sei minuti. Sandonini guida con autorità, ma Rampini rosicchia qualcosa a ogni passaggio, lima il distacco fino a trovarsi incollato al suo posteriore negli ultimi giri e resta lì, paziente, ad aspettare l'occasione. L'occasione arriva all'ultimo giro: Rampini lo infila e vince per una manciata di decimi, una delle più belle rimonte della giornata. Fenili chiude terza, Mauramati quarto.</p>
+</section>
+
+<section>
+  <h2>Finale 2</h2>
+  <p class="kicker">La risposta di Montecchi</p>
+  <p>Montecchi ha un conto aperto e lo mette subito in chiaro. Lui e Rampini girano appaiati per il comando, ruota a ruota, finché sul rettilineo compare il doppiato Geti. Geti, suo malgrado, diventa l'ago della bilancia: Rampini non riesce a evitarlo, Montecchi sì: è il momento che decide la finale. Montecchi se ne va e non si volta più indietro.</p>
+  <figure class="clip duel">
+    <video src="clips/f2-rampini-geti.mp4" poster="clips/f2-rampini-geti.jpg" autoplay muted loop playsinline controls preload="metadata"></video>
+    <figcaption><span class="who">Finale 2, la lotta per il comando</span><span>Sul rettilineo Rampini centra il doppiato Geti, Montecchi riparte davanti.</span><span class="src">Video pullstart.tv</span></figcaption>
+  </figure>
+  <p>Alle loro spalle la finale non concede tregua. Fenili perde aderenza e si ferma in mezzo a una curva, Mauramati arriva da dietro e non riesce a evitarla. I commissari rimettono in pista prima lui, e per Fenili la gara si complica. Caraffi, dopo la delusione della prima finale, si toglie almeno la soddisfazione di arrivare fino in fondo.</p>
+  <figure class="clip">
+    <video src="clips/f2-fenili-mauramati.mp4" poster="clips/f2-fenili-mauramati.jpg" autoplay muted loop playsinline controls preload="metadata"></video>
+    <figcaption><span class="who">Finale 2, Fenili e Mauramati</span><span>Fenili ferma in curva, Mauramati la centra arrivando da dietro.</span><span class="src">Video pullstart.tv</span></figcaption>
+  </figure>
+  <p>Poco dopo Rampini e Sandonini si toccano. Rampini potrebbe approfittarne, invece aspetta che Sandonini riparta e gli restituisce la posizione: un gesto di correttezza che vale quanto un sorpasso. Il secondo posto se lo prende comunque poco dopo, quando Sandonini va largo prima dell'ultima curva, perde aderenza e gli lascia lo spazio per l'infilata.</p>
+</section>
+
+<section>
+  <h2>Finale 3</h2>
+  <p class="kicker">Il bis di Montecchi</p>
+  <p>L'ultima finale si apre con una partenza amara per Mauramati. Al via viene tamponato da Madde', la carrozzeria si incastra tra le gomme posteriori e la macchina si trascina piano fino al primo commissario libero. Quando riparte è ultimo, staccato da tutti. Da lì costruisce una rimonta silenziosa e pulita, senza un errore, che lo riporta fino al quarto posto.</p>
+  <figure class="clip">
+    <video src="clips/f3-madde-mauramati.mp4" poster="clips/f3-madde-mauramati.jpg" autoplay muted loop playsinline controls preload="metadata"></video>
+    <figcaption><span class="who">Finale 3, il via di Mauramati</span><span>Il tamponamento di Madde' sul rettilineo di partenza.</span><span class="src">Video pullstart.tv</span></figcaption>
+  </figure>
+  <p>Davanti, intanto, si consuma l'ultimo atto della sfida. Al primo giro Montecchi si butta all'interno di Rampini in curva e i due si toccano. Ad avere la peggio è ancora Rampini, che scivola indietro mentre Montecchi prende il comando e lo porta fino alla bandiera a scacchi.</p>
+  <figure class="clip duel">
+    <video src="clips/f3-montecchi-rampini.mp4" poster="clips/f3-montecchi-rampini.jpg" autoplay muted loop playsinline controls preload="metadata"></video>
+    <figcaption><span class="who">Finale 3, il primo giro</span><span>Montecchi all'interno su Rampini, contatto e via al comando.</span><span class="src">Video pullstart.tv</span></figcaption>
+  </figure>
+  <p>Per Rampini è un pomeriggio che si sfilaccia. Prima un errore da solo, poi un contatto con il doppiato Geti che lascia la macchina ferita: non ritrova più il suo passo, si scompone nella curva che immette sul rettilineo e si ribalta. Qualche giro dopo passa su una boa e va in testacoda. Anche Sandonini paga un errore in solitaria, ma resta in corsa per il podio.</p>
+  <p>La finale perde anche due protagonisti per guasti. Madde' si ferma con un cuscinetto dell'assale posteriore esploso. Fenili, seconda, si ritira quando le batterie del radiocomando la lasciano a piedi. Anche Caraffi si ferma presto, mentre Geti, con pazienza, resta in pista e raccoglie un quinto posto che è il suo miglior risultato del pomeriggio. Montecchi vince davanti a Sandonini, Rampini salva il terzo posto e Mauramati completa la sua rimonta in quarta posizione.</p>
+</section>
+
+<section>
+  <p>Due finali a Montecchi, una a Rampini. La gara è di Montecchi, il campionato resta apertissimo: dopo due prove i due sono appaiati in vetta. Il prossimo capitolo della sfida si annuncia da non perdere.</p>
+  <p>Alle spalle dei primi, Geti e Caraffi, presenti a entrambe le prove, tengono il quinto e il sesto posto in campionato: la costanza, in una stagione lunga, è un capitale che si fa sentire.</p>
+</section>
+
+<div class="result">
+  <h2>Il podio di giornata</h2>
+  <figure class="photo"><img src="clips/podio.jpg" alt="Il podio della 1/12 LMH a RcLandia: Montecchi primo al centro, Rampini secondo a sinistra, Sandonini terzo a destra, ciascuno con la propria carrozzeria"></figure>
+  <p class="pole"><span>Pole</span>Alessandro Rampini</p>
+  <ol class="podium" aria-label="Podio di giornata">
+    <li class="p2"><span class="name">Alessandro Rampini</span><span class="step">2</span></li>
+    <li class="p1"><span class="name">Alberto Montecchi</span><span class="step">1</span></li>
+    <li class="p3"><span class="name">Lorenzo Sandonini</span><span class="step">3</span></li>
+  </ol>
+  <p class="others">4. Giovanni Mauramati · 5. Vittoria Fenili · 6. Francesco Madde' · 7. Sandro Geti · 8. Luca Caraffi</p>
+</div>
+
+<footer>Classifiche dai report ufficiali di cronometraggio. Spezzoni video dalla diretta di pullstart.tv da RcLandia Scandiano. Foto del podio a RcLandia.</footer>
+</main>
+
+<script>
+try{ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ document.querySelectorAll('video').forEach(v=>{v.removeAttribute('autoplay');v.pause();}); } }catch(e){}
+</script>
+</body>
+</html>
