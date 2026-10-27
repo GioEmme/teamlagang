@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Imovilli, Ghidini e Violi: il racconto della Vaschetta alla 2ª prova Italian Indoor Series 26/27 a RcLandia Scandiano.">
+<meta property="og:title" content="Vaschetta Scandiano · Tre in un punto">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://teamlagang.it/articoli/iis-2026-r2-vaschetta/index.html">
+<meta property="og:image" content="https://teamlagang.it/articoli/iis-2026-r2-vaschetta/clips/podio.jpg">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Vaschetta Scandiano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: colonna di lettura unica, racconto di gara; i clip escono come "monitor" del box, i cordoli gialli/neri della pista come unico segno grafico */
+:root{
+  --bg:#f6f6f2; --ink:#1d2026; --muted:#5d636d; --rule:#d9dad3;
+  --kerb:#e2a900; --kerb-ink:#8a6400; --asphalt:#24272d;
+  --f-display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#17191d; --ink:#e9e8e3; --muted:#a2a6ad; --rule:#33363d;
+  --kerb:#f0bc1c; --kerb-ink:#f0bc1c; --asphalt:#0f1013; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17191d; --ink:#e9e8e3; --muted:#a2a6ad; --rule:#33363d;
+  --kerb:#f0bc1c; --kerb-ink:#f0bc1c; --asphalt:#0f1013; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:1.1rem;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:44rem;margin:0 auto;padding-block:2.5rem 4rem;display:flex;flex-direction:column;gap:2.5rem}
+h1,h2{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.05}
+p{margin:0}
+
+header{display:flex;flex-direction:column;gap:.9rem;padding-bottom:1.6rem;
+  border-bottom:6px solid transparent;border-image:repeating-linear-gradient(90deg,var(--kerb) 0 28px,var(--ink) 28px 56px) 6}
+.eyebrow{font-family:var(--f-display);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.95rem;color:var(--kerb-ink)}
+h1{font-size:clamp(2.5rem,8vw,4.1rem);font-weight:800;text-transform:uppercase;letter-spacing:.01em}
+.dek{font-size:1.22rem;font-style:italic;color:var(--muted);max-width:38rem}
+.meta{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;font-family:var(--f-display);font-weight:500;font-size:1.05rem;letter-spacing:.03em;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:700}
+
+section{display:flex;flex-direction:column;gap:1.1rem}
+h2{font-size:2rem;font-weight:800;text-transform:uppercase}
+.kicker{font-family:var(--f-display);font-weight:600;font-size:1.1rem;letter-spacing:.03em;color:var(--kerb-ink);margin-top:-.6rem}
+
+figure.clip{margin:.3rem 0;background:var(--asphalt);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+figure.clip video{display:block;width:100%;max-width:100%;aspect-ratio:16/9;background:#000;object-fit:cover}
+figure.clip figcaption{display:flex;flex-direction:column;gap:.15rem;padding:.75rem 1rem .85rem;color:#e9e8e3;font-family:var(--f-display);font-size:1.05rem;letter-spacing:.02em;line-height:1.35}
+figure.clip .who{font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#f0bc1c;font-size:.9rem}
+figure.clip.duel .who::before{content:"Imovilli – Ghidini · ";color:#e9e8e3}
+figure.clip .src{font-size:.85rem;color:#9ea2a9}
+
+/* esito */
+.result{display:flex;flex-direction:column;gap:1.4rem;padding-top:1.6rem;
+  border-top:6px solid transparent;border-image:repeating-linear-gradient(90deg,var(--kerb) 0 28px,var(--ink) 28px 56px) 6}
+.pole{font-family:var(--f-display);font-size:1.25rem;letter-spacing:.03em}
+.pole span{font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--kerb-ink);margin-right:.6rem;font-size:1rem}
+.podium{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;align-items:end}
+.podium li{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:.35rem;text-align:center;font-family:var(--f-display)}
+.podium .name{font-weight:700;font-size:1.2rem;line-height:1.1;min-width:0}
+.podium .step{width:100%;border-radius:4px 4px 0 0;background:var(--ink);color:var(--bg);font-weight:800;font-size:1.9rem;display:flex;align-items:flex-start;justify-content:center;padding-top:.3rem}
+.podium .p1 .step{height:6.5rem;background:var(--kerb);color:#1d2026}
+.podium .p2 .step{height:5rem}
+.podium .p3 .step{height:3.8rem}
+figure.photo{margin:0;border-radius:6px;overflow:hidden}
+figure.photo img{display:block;width:100%;max-width:100%;height:auto}
+.others{font-size:.92rem;color:var(--muted)}
+
+/* dati di cronometraggio: sprazzi in linea col racconto */
+.stats{display:flex;flex-wrap:wrap;gap:.9rem 2.2rem;margin:.1rem 0;padding:.2rem 0 .2rem 1rem;border-left:4px solid var(--kerb);font-family:var(--f-display)}
+.stats div{display:flex;flex-direction:column;gap:.05rem;min-width:0}
+.stats .lbl{font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--kerb-ink)}
+.stats b{font-weight:800;font-size:1.55rem;line-height:1.1;color:var(--ink);font-variant-numeric:tabular-nums}
+.stats .det{font-size:.98rem;letter-spacing:.02em;color:var(--muted)}
+footer{font-size:.88rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:1.2rem}
+</style>
+</head>
+<body>
+
+<main>
+<header>
+  <div class="eyebrow">Italian Indoor Series 26/27 · 2ª prova · Vaschetta</div>
+  <h1>Tre in un punto</h1>
+  <p class="dek">A RcLandia Imovilli vince la giornata, Ghidini va più forte di tutti ma la pista gli presenta il conto, Violi non sbaglia mai. Nell'ultima finale arriva il gesto che resta. Alla fine i tre lasciano Scandiano racchiusi in un punto.</p>
+  <div class="meta"><span><b>Domenica 25 ottobre 2026</b></span><span>RcLandia, Scandiano (RE)</span></div>
+</header>
+
+<section>
+  <p>Due settimane prima, alla prima prova, aveva vinto Violi davanti a Ghidini e Imovilli, con Ghidini in pole. A Scandiano gli stessi tre si ritrovano davanti a tutti e per l'intera giornata si passano il comando come un testimone.</p>
+</section>
+
+<section>
+  <h2>Prove e qualifiche</h2>
+  <p class="kicker">La mattina di Ghidini</p>
+  <p>Nelle prove libere il più rapido è Ghidini, davanti a Imovilli e Venturelli. Nelle qualifiche il copione non cambia: Ghidini vince la prima manche, in cui Violi si ferma dopo pochi giri, e vince anche la seconda, la più veloce della giornata.</p>
+  <div class="stats">
+    <div><span class="lbl">Miglior qualifica</span><b>20 giri · 5:12.324</b><span class="det">Ghidini, 2ª manche</span></div>
+    <div><span class="lbl">Giro più veloce di giornata</span><b>14.962</b><span class="det">Ghidini, 2ª manche</span></div>
+  </div>
+  <p>Imovilli invece è in salita: nella seconda manche si ferma presto, nella terza non prende il via. Proprio in quella manche Ghidini cede il passo a Piluzza, che si prende la vittoria. Nella quarta e ultima Imovilli si riscatta e vince, mentre Ghidini si ferma dopo pochi giri. La pole però è già sua.</p>
+  <p>La griglia delle finali vede Ghidini davanti a Imovilli, Piluzza, Violi e Venturelli. Dietro di loro Spaggiari, Montanari e Massara.</p>
+</section>
+
+<section>
+  <h2>Finale 1</h2>
+  <p class="kicker">La prima di Imovilli</p>
+  <p>Al via Ghidini scatta davanti e Imovilli gli si mette in scia. Più indietro Massara ha una partenza brillante e guadagna posizioni, mentre Violi ne perde. Al secondo giro Piluzza, terzo, sbaglia da solo e scivola indietro: ne approfittano Venturelli e Violi. Due giri dopo è Violi a sbagliare, e Piluzza gli ripassa davanti.</p>
+  <p>Per otto giri Ghidini comanda. Al nono sbaglia la prima curva e Imovilli, che non aspettava altro, passa in testa. Ghidini resta secondo finché, a quattro giri dalla fine, tocca da solo l'isola rotonda subito dopo il traguardo e la macchina si ribalta. Prima che il commissario lo rimetta sulle ruote, lo passano Venturelli, Piluzza e Violi.</p>
+  <figure class="clip">
+    <video src="clips/f1-ghidini.mp4" poster="clips/f1-ghidini.jpg" autoplay muted loop playsinline controls preload="metadata"></video>
+    <figcaption><span class="who">Finale 1, a quattro giri dalla fine</span><span>Ghidini tocca l'isola dopo il traguardo e si ribalta.</span><span class="src">Video pullstart.tv</span></figcaption>
+  </figure>
+  <p>Imovilli vince senza più pericoli. Alle sue spalle Venturelli, partito quinto, firma un secondo posto che pesa; Piluzza è terzo, Violi quarto, Ghidini quinto.</p>
+  <div class="stats">
+    <div><span class="lbl">Al traguardo</span><b>4.606 s</b><span class="det">Imovilli su Venturelli dopo 18 giri</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Finale 2</h2>
+  <p class="kicker">Il bis di Imovilli</p>
+  <p>Ghidini parte di nuovo davanti e per otto giri tiene Imovilli alle spalle. Al nono i due arrivano appaiati sull'isola dopo curva 1: Imovilli lo affianca, le macchine si toccano e Ghidini finisce sul cordolo, dove resta incastrato finché arriva il commissario. Imovilli prende il comando e non lo lascia più.</p>
+  <figure class="clip duel">
+    <video src="clips/f2-imovilli-ghidini.mp4" poster="clips/f2-imovilli-ghidini.jpg" autoplay muted loop playsinline controls preload="metadata"></video>
+    <figcaption><span class="who">Finale 2, il nono giro</span><span>Imovilli affianca Ghidini, che resta incastrato sul cordolo dell'isola.</span><span class="src">Video pullstart.tv</span></figcaption>
+  </figure>
+  <div class="stats">
+    <div><span class="lbl">Miglior finale di giornata</span><b>18 giri · 5:01.388</b><span class="det">Imovilli: il record della classe in finale passa da 17 a 18 giri</span></div>
+  </div>
+  <p>Dietro a Imovilli il secondo posto è una lunga contesa tra Violi e Piluzza, che se lo scambiano due volte prima che Violi lo chiuda a suo favore. Ghidini intanto rimonta, ripassa Venturelli negli ultimi giri e si porta a ridosso del podio.</p>
+  <p>All'ultimo giro il colpo di scena: Venturelli tocca Piluzza, la macchina di Piluzza vola per aria e Piluzza decide di fermarsi. Il terzo posto passa così a Ghidini, che salva una finale nata storta.</p>
+  <figure class="clip">
+    <video src="clips/f2-venturelli-piluzza.mp4" poster="clips/f2-venturelli-piluzza.jpg" autoplay muted loop playsinline controls preload="metadata"></video>
+    <figcaption><span class="who">Finale 2, l'ultimo giro</span><span>Il contatto tra Venturelli e Piluzza: la macchina di Piluzza vola per aria.</span><span class="src">Video pullstart.tv</span></figcaption>
+  </figure>
+  <p>Più indietro Spaggiari chiude sesto per la seconda volta, mentre Montanari in questa finale non prende il via.</p>
+</section>
+
+<section>
+  <h2>Finale 3</h2>
+  <p class="kicker">Il gesto di Imovilli</p>
+  <p>Nell'ultima finale Ghidini parte in pole e questa volta non sbaglia nulla. Imovilli lo segue come un'ombra e Violi è terzo. Piluzza, sesto dopo il primo giro, è già quarto al terzo, e da lì fino al sedicesimo l'ordine dei primi non cambia.</p>
+  <p>Al diciassettesimo giro, nella curva a sinistra, Imovilli tocca Ghidini sulla fiancata. I due proseguono appaiati, poi la macchina di Ghidini si alza contro l'isola e si ribalta. Imovilli potrebbe andarsene e prendersi anche questa finale. Invece si ferma e aspetta che il commissario rimetta in pista Ghidini, per restituirgli la posizione che il contatto gli aveva tolto.</p>
+  <figure class="clip duel">
+    <video src="clips/f3-imovilli-ghidini.mp4" poster="clips/f3-imovilli-ghidini.jpg" autoplay muted loop playsinline controls preload="metadata"></video>
+    <figcaption><span class="who">Finale 3, il diciassettesimo giro</span><span>Imovilli tocca Ghidini, che si ribalta contro l'isola.</span><span class="src">Video pullstart.tv</span></figcaption>
+  </figure>
+  <p>Ghidini vince, Imovilli è secondo. Violi chiude terzo, Piluzza quarto, Spaggiari quinto davanti a Venturelli. Per Massara la finale si complica presto: al quinto giro perde molto tempo e chiude ottavo, dietro a Montanari.</p>
+  <div class="stats">
+    <div><span class="lbl">Al traguardo</span><b>0.511 s</b><span class="det">Ghidini su Imovilli, dopo l'attesa</span></div>
+  </div>
+</section>
+
+<section>
+  <p>Due finali a Imovilli, una a Ghidini. La giornata è di Imovilli, ma quello che resta di Scandiano è il suo gesto nell'ultima finale. Violi, mai oltre il quarto posto, sale sul podio e resta in testa al campionato, ora appaiato a Imovilli, con Ghidini a un solo punto. Dopo due prove la Vaschetta ha tre leader in un punto.</p>
+  <p>Alle loro spalle Venturelli, secondo nella prima finale, chiude quarto di giornata e risale in classifica, mentre Spaggiari, sesto nelle prime due finali e quinto nella terza, porta a casa la costanza di chi non sbaglia.</p>
+</section>
+
+<div class="result">
+  <h2>Il podio di giornata</h2>
+  <figure class="photo"><img src="clips/podio.jpg" alt="Il podio della Vaschetta a RcLandia: Imovilli primo al centro, Ghidini secondo a sinistra, Violi terzo a destra"></figure>
+  <p class="pole"><span>Pole</span>Massimo Ghidini</p>
+  <p class="pole"><span>Giro veloce</span>Massimo Ghidini · 14.962</p>
+  <ol class="podium" aria-label="Podio di giornata">
+    <li class="p2"><span class="name">Massimo Ghidini</span><span class="step">2</span></li>
+    <li class="p1"><span class="name">Massimo Imovilli</span><span class="step">1</span></li>
+    <li class="p3"><span class="name">Matteo Violi</span><span class="step">3</span></li>
+  </ol>
+  <p class="others">4. Filippo Claudio Venturelli · 5. Michele Piluzza · 6. Franco Spaggiari · 7. Andrea Massara · 8. Silvano Montanari</p>
+</div>
+
+<footer>Classifiche e tempi dai report ufficiali di cronometraggio MyRCM. Spezzoni video dalla diretta di pullstart.tv da RcLandia Scandiano. Foto del podio a RcLandia.</footer>
+</main>
+
+<script>
+try{ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ document.querySelectorAll('video').forEach(v=>{v.removeAttribute('autoplay');v.pause();}); } }catch(e){}
+</script>
+</body>
+</html>
