@@ -67,6 +67,13 @@ figure.clip .src{font-size:.85rem;color:#9ea2a9}
 figure.photo{margin:0;border-radius:6px;overflow:hidden}
 figure.photo img{display:block;width:100%;max-width:100%;height:auto}
 .others{font-size:.92rem;color:var(--muted)}
+
+/* dati di cronometraggio: sprazzi in linea col racconto */
+.stats{display:flex;flex-wrap:wrap;gap:.9rem 2.2rem;margin:.1rem 0;padding:.2rem 0 .2rem 1rem;border-left:4px solid var(--kerb);font-family:var(--f-display)}
+.stats div{display:flex;flex-direction:column;gap:.05rem;min-width:0}
+.stats .lbl{font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--kerb-ink)}
+.stats b{font-weight:800;font-size:1.55rem;line-height:1.1;color:var(--ink);font-variant-numeric:tabular-nums}
+.stats .det{font-size:.98rem;letter-spacing:.02em;color:var(--muted)}
 footer{font-size:.88rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:1.2rem}
 </style>
 </head>
@@ -89,6 +96,9 @@ footer{font-size:.88rem;color:var(--muted);border-top:1px solid var(--rule);padd
   <p class="kicker">La mattina di Rampini</p>
   <p>Nelle prove libere il cronometro sorride a Mauramati, il più rapido del turno davanti a Rampini e Sandonini. È però solo un assaggio, perché appena le qualifiche entrano nel vivo la scena se la prende Rampini.</p>
   <p>La prima manche la vince lui, con Sandonini a ruota e Montecchi terzo, ancora alla ricerca del passo giusto. Nella seconda Montecchi si scuote e sale secondo, ma Rampini resta davanti. Nella terza Montecchi scivola di nuovo indietro, superato da Sandonini e da una Fenili in crescita, mentre Rampini mette in fila la terza vittoria. Nella quarta e ultima manche arriva il poker: Rampini vince ancora, Montecchi chiude secondo e si assicura il posto accanto a lui in prima fila.</p>
+  <div class="stats">
+    <div><span class="lbl">Miglior qualifica</span><b>27 giri · 6:13.318</b><span class="det">Rampini, 4ª manche: l'unico a chiudere 27 giri</span></div>
+  </div>
   <p>Più indietro va in scena un duello tutto suo, quello tra Caraffi e Geti, che manche dopo manche si contendono le ultime due piazze della griglia. Quasi sempre la spunta Caraffi, ma Geti non molla mai.</p>
   <p>La griglia delle finali vede Rampini in pole, poi Montecchi, Sandonini, Fenili e Mauramati. Il pomeriggio però racconterà un'altra storia.</p>
 </section>
@@ -102,12 +112,19 @@ footer{font-size:.88rem;color:var(--muted);border-top:1px solid var(--rule);padd
     <figcaption><span class="who">Finale 1, il via</span><span>Montecchi sale sull'isola, rientra e tocca Rampini. Sandonini passa.</span><span class="src">Video pullstart.tv</span></figcaption>
   </figure>
   <p>Da lì comincia una caccia lunga sei minuti. Sandonini guida con autorità, ma Rampini rosicchia qualcosa a ogni passaggio, lima il distacco fino a trovarsi incollato al suo posteriore negli ultimi giri e resta lì, paziente, ad aspettare l'occasione. L'occasione arriva all'ultimo giro: Rampini lo infila e vince per una manciata di decimi, una delle più belle rimonte della giornata. Fenili chiude terza, Mauramati quarto.</p>
+  <div class="stats">
+    <div><span class="lbl">Al traguardo</span><b>0.658 s</b><span class="det">Rampini su Sandonini dopo 25 giri</span></div>
+    <div><span class="lbl">Giro più veloce di giornata</span><b>13.238</b><span class="det">Rampini, 5° giro della rimonta</span></div>
+  </div>
 </section>
 
 <section>
   <h2>Finale 2</h2>
   <p class="kicker">La risposta di Montecchi</p>
   <p>Montecchi ha un conto aperto e lo mette subito in chiaro. Lui e Rampini girano appaiati per il comando, ruota a ruota, finché sul rettilineo compare il doppiato Geti. Geti, suo malgrado, diventa l'ago della bilancia: Rampini non riesce a evitarlo, Montecchi sì: è il momento che decide la finale. Montecchi se ne va e non si volta più indietro.</p>
+  <div class="stats">
+    <div><span class="lbl">Miglior finale di giornata</span><b>25 giri · 6:00.721</b><span class="det">Montecchi, passo medio 13.882</span></div>
+  </div>
   <figure class="clip duel">
     <video src="clips/f2-rampini-geti.mp4" poster="clips/f2-rampini-geti.jpg" autoplay muted loop playsinline controls preload="metadata"></video>
     <figcaption><span class="who">Finale 2, la lotta per il comando</span><span>Sul rettilineo Rampini centra il doppiato Geti, Montecchi riparte davanti.</span><span class="src">Video pullstart.tv</span></figcaption>
@@ -124,11 +141,17 @@ footer{font-size:.88rem;color:var(--muted);border-top:1px solid var(--rule);padd
   <h2>Finale 3</h2>
   <p class="kicker">Il bis di Montecchi</p>
   <p>L'ultima finale si apre con una partenza amara per Mauramati. Al via viene tamponato da Madde', la carrozzeria si incastra tra le gomme posteriori e la macchina si trascina piano fino al primo commissario libero. Quando riparte è ultimo, staccato da tutti. Da lì costruisce una rimonta silenziosa e pulita, senza un errore, che lo riporta fino al quarto posto.</p>
+  <div class="stats">
+    <div><span class="lbl">Passo in finale 3</span><b>14.199</b><span class="det">Mauramati, secondo solo a Montecchi (13.899)</span></div>
+  </div>
   <figure class="clip">
     <video src="clips/f3-madde-mauramati.mp4" poster="clips/f3-madde-mauramati.jpg" autoplay muted loop playsinline controls preload="metadata"></video>
     <figcaption><span class="who">Finale 3, il via di Mauramati</span><span>Il tamponamento di Madde' sul rettilineo di partenza.</span><span class="src">Video pullstart.tv</span></figcaption>
   </figure>
   <p>Davanti, intanto, si consuma l'ultimo atto della sfida. Al primo giro Montecchi si butta all'interno di Rampini in curva e i due si toccano. Ad avere la peggio è ancora Rampini, che scivola indietro mentre Montecchi prende il comando e lo porta fino alla bandiera a scacchi.</p>
+  <div class="stats">
+    <div><span class="lbl">Al traguardo</span><b>12.432 s</b><span class="det">Montecchi su Sandonini dopo 25 giri</span></div>
+  </div>
   <figure class="clip duel">
     <video src="clips/f3-montecchi-rampini.mp4" poster="clips/f3-montecchi-rampini.jpg" autoplay muted loop playsinline controls preload="metadata"></video>
     <figcaption><span class="who">Finale 3, il primo giro</span><span>Montecchi all'interno su Rampini, contatto e via al comando.</span><span class="src">Video pullstart.tv</span></figcaption>
@@ -146,6 +169,7 @@ footer{font-size:.88rem;color:var(--muted);border-top:1px solid var(--rule);padd
   <h2>Il podio di giornata</h2>
   <figure class="photo"><img src="clips/podio.jpg" alt="Il podio della 1/12 LMH a RcLandia: Montecchi primo al centro, Rampini secondo a sinistra, Sandonini terzo a destra, ciascuno con la propria carrozzeria"></figure>
   <p class="pole"><span>Pole</span>Alessandro Rampini</p>
+  <p class="pole"><span>Giro veloce</span>Alessandro Rampini · 13.238</p>
   <ol class="podium" aria-label="Podio di giornata">
     <li class="p2"><span class="name">Alessandro Rampini</span><span class="step">2</span></li>
     <li class="p1"><span class="name">Alberto Montecchi</span><span class="step">1</span></li>
@@ -154,7 +178,7 @@ footer{font-size:.88rem;color:var(--muted);border-top:1px solid var(--rule);padd
   <p class="others">4. Giovanni Mauramati · 5. Vittoria Fenili · 6. Francesco Madde' · 7. Sandro Geti · 8. Luca Caraffi</p>
 </div>
 
-<footer>Classifiche dai report ufficiali di cronometraggio. Spezzoni video dalla diretta di pullstart.tv da RcLandia Scandiano. Foto del podio a RcLandia.</footer>
+<footer>Classifiche e tempi dai report ufficiali di cronometraggio MyRCM. Spezzoni video dalla diretta di pullstart.tv da RcLandia Scandiano. Foto del podio a RcLandia.</footer>
 </main>
 
 <script>
