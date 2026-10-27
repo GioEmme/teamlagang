@@ -6,8 +6,8 @@
 <meta name="description" content="Imovilli, Ghidini e Violi: il racconto della Vaschetta alla 2ª prova Italian Indoor Series 26/27 a RcLandia Scandiano.">
 <meta property="og:title" content="Vaschetta Scandiano · Tre in un punto">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://teamlagang.it/articoli/iis-2026-r2-vaschetta/index.html">
-<meta property="og:image" content="https://teamlagang.it/articoli/iis-2026-r2-vaschetta/clips/podio.jpg">
+<meta property="og:url" content="https://teamlagang.it/articoli/iis-2026-r2/vaschetta/index.html">
+<meta property="og:image" content="https://teamlagang.it/articoli/iis-2026-r2/vaschetta/clips/podio.jpg">
 <style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Vaschetta Scandiano</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,11 +75,31 @@ figure.photo img{display:block;width:100%;max-width:100%;height:auto}
 .stats b{font-weight:800;font-size:1.55rem;line-height:1.1;color:var(--ink);font-variant-numeric:tabular-nums}
 .stats .det{font-size:.98rem;letter-spacing:.02em;color:var(--muted)}
 footer{font-size:.88rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:1.2rem}
+
+/* barra del round: le 4 categorie della prova */
+nav.round{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem;padding-bottom:1rem;border-bottom:1px solid var(--rule);margin-bottom:-1rem;font-family:var(--f-display)}
+nav.round .home{font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.85rem;color:var(--muted);text-decoration:none}
+nav.round .home:hover{color:var(--ink)}
+nav.round ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
+nav.round li>*{display:inline-block;padding:.2rem .75rem;border:1px solid var(--rule);border-radius:3px;font-weight:600;font-size:1.02rem;letter-spacing:.03em;text-decoration:none;color:var(--ink)}
+nav.round a:hover{border-color:var(--kerb)}
+nav.round a[aria-current]{background:var(--kerb);border-color:var(--kerb);color:#1d2026}
+nav.round .soon{color:var(--muted);border-style:dashed}
+.allround{color:var(--ink);text-underline-offset:3px}
 </style>
 </head>
 <body>
 
 <main>
+<nav class="round" aria-label="Report della 2ª prova">
+  <a class="home" href="../index.html">IIS 26/27 · 2ª prova</a>
+  <ul>
+    <li><span class="soon" title="In arrivo">1/12</span></li>
+    <li><a href="../lmh/index.html">1/12 LMH</a></li>
+    <li><span class="soon" title="In arrivo">GT</span></li>
+    <li><a href="../vaschetta/index.html" aria-current="page">Vaschetta</a></li>
+  </ul>
+</nav>
 <header>
   <div class="eyebrow">Italian Indoor Series 26/27 · 2ª prova · Vaschetta</div>
   <h1>Tre in un punto</h1>
@@ -171,7 +191,7 @@ footer{font-size:.88rem;color:var(--muted);border-top:1px solid var(--rule);padd
   <p class="others">4. Filippo Claudio Venturelli · 5. Michele Piluzza · 6. Franco Spaggiari · 7. Andrea Massara · 8. Silvano Montanari</p>
 </div>
 
-<footer>Classifiche e tempi dai report ufficiali di cronometraggio MyRCM. Spezzoni video dalla diretta di pullstart.tv da RcLandia Scandiano. Foto del podio a RcLandia.</footer>
+<footer>Classifiche e tempi dai report ufficiali di cronometraggio MyRCM. Spezzoni video dalla diretta di pullstart.tv da RcLandia Scandiano. Foto del podio a RcLandia. <a class="allround" href="../index.html">Tutti i report della 2ª prova</a>.</footer>
 </main>
 
 <script>
