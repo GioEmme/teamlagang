@@ -175,6 +175,10 @@ export const site = {
       { date: "21 Marzo 2027", title: "5ª Prova Italian Indoor Series ’26/27", round: 5, iis: true },
     ],
     fees: { oneClass: 30, twoClasses: 40, lateSurcharge: 10 },
+    // Report pubblicati in public/articoli/, collegati all'evento myrcm (dId).
+    reports: {
+      100934: "/articoli/iis-2026-r2/index.html",
+    } as Record<number, string>,
     paymentEmail: "info@teamlagang.it",
   },
   social: {

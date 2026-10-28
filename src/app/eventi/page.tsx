@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
+import { site } from "@/lib/site";
 import {
   buildMyrcmEventUrl,
   buildResultsLookup,
@@ -118,6 +119,7 @@ export default async function EventiPage({
               {latest.map((e) => {
                 const past = isPast(e);
                 const regOpen = e.registrationStatus === "open" && !past;
+                const report = past ? site.season.reports[e.myrcmId] : undefined;
                 return (
                   <Reveal key={e.myrcmId}>
                     <div className="grid grid-cols-12 gap-4 py-6 md:py-8 px-2 md:px-4 hover:bg-bg-elev transition-colors">
@@ -184,6 +186,15 @@ export default async function EventiPage({
                           <span className="font-mono text-[10px] uppercase tracking-widest text-ink-faint">
                             Iscrizioni chiuse
                           </span>
+                        ) : null}
+                        {report ? (
+                          <a
+                            href={report}
+                            data-cursor="leggi"
+                            className="inline-flex items-center gap-2 px-3 py-1.5 border border-yellow/50 text-yellow font-mono text-[10px] uppercase tracking-widest font-semibold hover:bg-yellow hover:text-bg transition-colors"
+                          >
+                            Leggi il report <span>→</span>
+                          </a>
                         ) : null}
                       </div>
                     </div>
