@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { site } from "@/lib/site";
+import { ReportModal } from "@/components/ReportModal";
 import {
   buildMyrcmEventUrl,
   buildResultsLookup,
@@ -188,13 +189,13 @@ export default async function EventiPage({
                           </span>
                         ) : null}
                         {report ? (
-                          <a
+                          <ReportModal
                             href={report}
-                            data-cursor="leggi"
+                            title={`Report · ${e.name}`}
                             className="inline-flex items-center gap-2 px-3 py-1.5 border border-yellow/50 text-yellow font-mono text-[10px] uppercase tracking-widest font-semibold hover:bg-yellow hover:text-bg transition-colors"
                           >
                             Leggi il report <span>→</span>
-                          </a>
+                          </ReportModal>
                         ) : null}
                       </div>
                     </div>
