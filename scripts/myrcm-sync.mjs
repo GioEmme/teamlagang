@@ -107,86 +107,119 @@ async function fetchHtml(url) {
 
 // --------------- parsers ---------------
 
-function parseEvents(html) {
-  const $ = cheerio.load(html);
-  const rows = $("#data-table tr").toArray();
-  const events = [];
-  for (const tr of rows) {
-    const tds = $(tr).find("td").toArray();
-    if (tds.length < 6) continue; // header or empty
-    const linkA = $(tds[1]).find("a").first();
-    const href = linkA.attr("href") || "";
-    const idMatch = href.match(/dId\[E\]=(\d+)/);
-    if (!idMatch) continue;
-    const myrcmId = parseInt(idMatch[1], 10);
+// myrcm.ch redesigned its site in 2026: the org page moved to
+// /it/organizers/<org> and lists event ids only (upcoming cards + past table);
+// dates, status and entry counts live on each event's detail page.
 
-    const countCell = $(tds[4]);
-    const countAnchors = countCell.find("a").toArray();
-    const registered = countAnchors[0]
-      ? parseInt(cleanText($(countAnchors[0]).text()), 10) || 0
-      : 0;
-    const waiting = countAnchors[1]
-      ? parseInt(cleanText($(countAnchors[1]).text()), 10) || 0
-      : 0;
+const MONTHS = {
+  gen: 1, jan: 1, feb: 2, mar: 3, "mär": 3, apr: 4, mag: 5, mai: 5, may: 5,
+  giu: 6, jun: 6, lug: 7, jul: 7, ago: 8, aug: 8, set: 9, sep: 9,
+  ott: 10, okt: 10, oct: 10, nov: 11, dic: 12, dez: 12, dec: 12,
+};
 
-    // Registration cell — distinguish open / closed / scheduled / unknown.
-    const regCell = $(tds[5]);
-    const regHtml = regCell.html() || "";
-    const regText = cleanText(regCell.text());
-    let registrationStatus = null;
-    if (regHtml.includes("Sign up to this event")) {
-      registrationStatus = "open";
-    } else if (
-      /color:\s*red/i.test(regHtml) ||
-      /Nomina chiusa/i.test(regHtml)
-    ) {
-      registrationStatus = "closed";
-    } else if (regText) {
-      registrationStatus = "scheduled";
-    }
-
-    events.push({
-      myrcmId,
-      name: cleanText(linkA.text()),
-      startDate: parseDateIt(cleanText($(tds[2]).text())),
-      endDate: parseDateIt(cleanText($(tds[3]).text())),
-      registeredCount: registered,
-      waitingCount: waiting,
-      registrationDeadline: parseDeadlineIt(regText),
-      registrationStatus,
-    });
-  }
-  return events;
+function isoFromParts(day, month, year) {
+  const mm = MONTHS[cleanText(month).toLowerCase().slice(0, 3)];
+  const dd = parseInt(cleanText(day), 10);
+  const yy = parseInt(cleanText(year), 10);
+  if (!mm || !dd || !yy) return null;
+  return `${yy}-${String(mm).padStart(2, "0")}-${String(dd).padStart(2, "0")}`;
 }
 
-function parseChampionshipsIndex(html) {
+function parseOrgPage(html) {
   const $ = cheerio.load(html);
-  const rows = $("#table-data-championship tr").toArray();
+  const eventIds = [];
+  const seen = new Set();
+  const addId = (href) => {
+    const m = (href || "").match(/\/organizers\/\d+\/(\d+)/);
+    if (!m) return;
+    const id = parseInt(m[1], 10);
+    if (!seen.has(id)) {
+      seen.add(id);
+      eventIds.push(id);
+    }
+  };
+  // upcoming events: cards without the championship-row class
+  $("article.host-event-row:not(.championship-row) h3 a").each((_, a) =>
+    addId($(a).attr("href")),
+  );
+  // past events: history table
+  $("table.host-history-table tbody tr").each((_, tr) =>
+    addId($(tr).find("td").eq(1).find("a").attr("href")),
+  );
+
   const champs = [];
-  for (const tr of rows) {
-    const tds = $(tr).find("td").toArray();
-    if (tds.length < 7) continue;
-    const reportLink = $(tds[6]).find("a[onclick]").first();
-    const onclick = reportLink.attr("onclick") || "";
-    const idMatch = onclick.match(/openNewWindows\((\d+)\)/);
-    if (!idMatch) continue;
-
-    const rawCategory = cleanText($(tds[2]).text());
-    const category = rawCategory.replace(/\s*\[.*\]\s*$/, "").trim();
-
-    const countedRaw = cleanText($(tds[4]).text());
-    const notCountedRaw = cleanText($(tds[5]).text());
-
+  $("article.championship-row").each((_, art) => {
+    const url = $(art).find("[data-report-url]").attr("data-report-url") || "";
+    const idMatch = url.match(/championship\/(\d+)/);
+    if (!idMatch) return;
+    const header = cleanText(
+      $(art).closest("section").find(".section-header h2").first().text(),
+    );
+    const year = parseInt((header.match(/(\d{4})/) || [])[1], 10) || null;
+    const rawCategory = cleanText($(art).find("p").first().text());
+    const events = parseInt(cleanText($(art).find(".badge").first().text()), 10);
     champs.push({
       myrcmId: parseInt(idMatch[1], 10),
-      name: cleanText($(tds[1]).text()),
-      category,
-      year: parseInt(cleanText($(tds[3]).text()), 10),
-      roundsCounted: countedRaw ? parseInt(countedRaw, 10) : null,
-      roundsNotCounted: notCountedRaw ? parseInt(notCountedRaw, 10) : null,
+      name: cleanText($(art).find("h3").first().text()),
+      category: rawCategory.replace(/\s*\[.*\]\s*$/, "").trim(),
+      year,
+      roundsCounted: Number.isFinite(events) ? events : null,
+      roundsNotCounted: null,
     });
-  }
-  return champs;
+  });
+  return { eventIds, champs };
+}
+
+function parseEventDetail(html, myrcmId) {
+  const $ = cheerio.load(html);
+  const header = $("section.detail-header").first();
+  const dateOf = (sel) => {
+    const box = header.find(sel).first();
+    if (!box.length) return null;
+    return isoFromParts(
+      box.find(".date-day").text(),
+      box.find(".date-month").text(),
+      box.find(".date-year").text(),
+    );
+  };
+  const startDate = dateOf(".date-box.from") ?? dateOf(".date-box");
+  const endDate = dateOf(".date-box.to") ?? startDate;
+
+  // status badge next to the title: open / notopen ("aperta dal …") / closed
+  let registrationStatus = null;
+  header.find(".badges .badge").each((_, b) => {
+    const cls = $(b).attr("class") || "";
+    if (/\bnotopen\b/.test(cls)) registrationStatus = "scheduled";
+    else if (/\bopen\b/.test(cls)) registrationStatus = "open";
+    else if (/\bclosed\b/.test(cls)) registrationStatus = "closed";
+  });
+
+  // entries per class: confirmed (list type 1) and waiting list (type 0).
+  // Only tbody rows: the tfoot "Totale" row repeats the sums.
+  let registered = 0;
+  let waiting = 0;
+  $("table.event-class-table tbody [data-booking-list-type]").each((_, btn) => {
+    const n = parseInt(cleanText($(btn).text()), 10) || 0;
+    if ($(btn).attr("data-booking-list-type") === "1") registered += n;
+    else if ($(btn).attr("data-booking-list-type") === "0") waiting += n;
+  });
+
+  // the deadline is still in the markup, but inside an HTML comment
+  const dl = html.match(
+    /Anmeldeschluss<\/span>\s*<span class="info-value">(\d{1,2}) (\S+) (\d{4}) (\d{2}):(\d{2})/,
+  );
+  const dlDate = dl ? isoFromParts(dl[1], dl[2], dl[3]) : null;
+
+  return {
+    myrcmId,
+    name: cleanText(header.find("h1.event-title").first().text()),
+    startDate,
+    endDate,
+    registeredCount: registered,
+    waitingCount: waiting,
+    registrationDeadline: dlDate ? `${dlDate}T${dl[4]}:${dl[5]}:00Z` : null,
+    registrationStatus,
+  };
 }
 
 function parseChampionshipDetail(html) {
@@ -401,12 +434,35 @@ async function main() {
       await sql`TRUNCATE TABLE mr_round_results, mr_standings, mr_championship_rounds, mr_championships, mr_events RESTART IDENTITY CASCADE`;
     }
 
-    const mainUrl = `https://www.myrcm.ch/myrcm/main?hId%5B1%5D=org&dId%5BO%5D=${ORG_ID}&pLa=it`;
+    const mainUrl = `https://www.myrcm.ch/it/organizers/${ORG_ID}`;
     log("FETCH", mainUrl);
     const html = await fetchHtml(mainUrl);
+    const org = parseOrgPage(html);
+    log("PARSE", `event ids: ${org.eventIds.length}, championships: ${org.champs.length}`);
+    // An empty page means the layout changed again: fail loudly instead of
+    // reporting a "successful" sync that writes nothing.
+    if (org.eventIds.length === 0 || org.champs.length === 0) {
+      throw new Error(
+        `myrcm org page parsed empty (events=${org.eventIds.length}, championships=${org.champs.length}) — layout changed?`,
+      );
+    }
 
     if (!SKIP_EVENTS) {
-      const events = parseEvents(html);
+      const events = [];
+      for (const id of org.eventIds) {
+        await sleep(REQUEST_DELAY_MS);
+        const url = `https://www.myrcm.ch/it/organizers/${ORG_ID}/${id}`;
+        const ev = parseEventDetail(await fetchHtml(url), id);
+        if (!ev.name || !ev.startDate) {
+          log("WARN", `skip ${url}: name or date not found`);
+          continue;
+        }
+        log(
+          "PARSE",
+          `  ${ev.startDate} ${ev.name} · ${ev.registrationStatus ?? "-"} · ${ev.registeredCount} iscritti, ${ev.waitingCount} in attesa`,
+        );
+        events.push(ev);
+      }
       log("PARSE", `events: ${events.length}`);
       if (sql) eventsProcessed = await upsertEvents(sql, events);
       else eventsProcessed = events.length;
@@ -414,12 +470,10 @@ async function main() {
     }
 
     if (!SKIP_CHAMPS) {
-      const champs = parseChampionshipsIndex(html);
-      log("PARSE", `championships: ${champs.length}`);
-      for (const c of champs) {
+      for (const c of org.champs) {
         await sleep(REQUEST_DELAY_MS);
-        const url = `https://www.myrcm.ch/myrcm/championship/it/${c.myrcmId}`;
-        log("FETCH", `${url} (${c.name} · ${c.category})`);
+        const url = `https://www.myrcm.ch/rest/v1/championship/${c.myrcmId}?pLa=it`;
+        log("FETCH", `${url} (${c.name} · ${c.category} · ${c.year})`);
         const detailHtml = await fetchHtml(url);
         const detail = parseChampionshipDetail(detailHtml);
         log(
