@@ -9,7 +9,6 @@ import { SocialRail, SocialFab } from "@/components/SocialRail";
 import { site } from "@/lib/site";
 import { getNextEventInWindow } from "@/lib/myrcm";
 import { BannerPopup } from "@/components/BannerPopup";
-import { getActiveBanners, type ActiveBanner } from "@/lib/banners";
 
 const anton = Anton({
   weight: "400",
@@ -77,13 +76,6 @@ export default async function RootLayout({
     console.error("layout: getNextEventInWindow failed", err);
   }
 
-  let banners: ActiveBanner[] = [];
-  try {
-    banners = await getActiveBanners();
-  } catch (err) {
-    console.error("layout: getActiveBanners failed", err);
-  }
-
   return (
     <html
       lang="it"
@@ -98,7 +90,7 @@ export default async function RootLayout({
               <>
                 <SocialRail nextEvent={nextEvent} />
                 <SocialFab nextEvent={nextEvent} />
-                <BannerPopup banners={banners} />
+                <BannerPopup />
               </>
             }
             footer={<Footer />}

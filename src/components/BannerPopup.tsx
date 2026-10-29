@@ -41,7 +41,7 @@ function markClosed(b: ActiveBanner) {
   }
 }
 
-export function BannerPopup({ banners }: { banners: ActiveBanner[] }) {
+export function BannerPopup() {
   const [items, setItems] = useState<ActiveBanner[]>([]);
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
@@ -52,15 +52,25 @@ export function BannerPopup({ banners }: { banners: ActiveBanner[] }) {
   const lenis = useLenis();
 
   useEffect(() => {
-    const pending = banners.filter((b) => !wasClosed(b));
-    if (pending.length === 0) return;
-    const t = setTimeout(() => {
-      setItems(pending);
-      setIndex(0);
-      setOpen(true);
-    }, 800);
-    return () => clearTimeout(t);
-  }, [banners]);
+    let t: ReturnType<typeof setTimeout> | undefined;
+    let cancelled = false;
+    fetch("/api/banners")
+      .then((r) => (r.ok ? r.json() : { banners: [] }))
+      .then((data: { banners: ActiveBanner[] }) => {
+        const pending = data.banners.filter((b) => !wasClosed(b));
+        if (cancelled || pending.length === 0) return;
+        t = setTimeout(() => {
+          setItems(pending);
+          setIndex(0);
+          setOpen(true);
+        }, 800);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+      clearTimeout(t);
+    };
+  }, []);
 
   const many = items.length > 1;
 
