@@ -6,7 +6,9 @@ import { useLenis } from "lenis/react";
 import type { ActiveBanner } from "@/lib/banners";
 
 // Popup promozionale in sovrimpressione all'apertura del sito.
-// Più banner validi insieme → carosello con frecce ai lati.
+// Più banner validi insieme → carosello con frecce ai lati. La X chiude
+// tutto, ma segna come chiusi solo i banner effettivamente mostrati:
+// quelli mai visti tornano alla visita successiva.
 // "Una volta sola": alla chiusura un cookie lo tiene chiuso per un anno.
 // "A ogni visita": resta chiuso solo per la sessione del browser, alla
 // visita successiva riappare.
@@ -49,6 +51,7 @@ export function BannerPopup() {
   const closeRef = useRef<HTMLButtonElement>(null);
   // uno swipe non deve contare come clic sul link dell'immagine
   const dragged = useRef(false);
+  const seen = useRef(new Set<string>());
   const lenis = useLenis();
 
   useEffect(() => {
@@ -79,8 +82,12 @@ export function BannerPopup() {
     setIndex((i) => (i + step + items.length) % items.length);
   }
 
+  useEffect(() => {
+    if (open && items[index]) seen.current.add(items[index].id);
+  }, [open, index, items]);
+
   function close() {
-    items.forEach(markClosed);
+    items.filter((b) => seen.current.has(b.id)).forEach(markClosed);
     setOpen(false);
   }
 
