@@ -11,9 +11,9 @@ export type ActiveBanner = {
   showEveryVisit: boolean;
 };
 
-// Il banner attivo più recente dentro la sua finestra di validità.
-export async function getActiveBanner(): Promise<ActiveBanner | null> {
-  const [row] = await db
+// I banner attivi dentro la loro finestra di validità, l'ultimo modificato per primo.
+export async function getActiveBanners(): Promise<ActiveBanner[]> {
+  return db
     .select({
       id: banners.id,
       title: banners.title,
@@ -30,7 +30,5 @@ export async function getActiveBanner(): Promise<ActiveBanner | null> {
         gt(banners.endsAt, sql`now()`),
       ),
     )
-    .orderBy(desc(banners.updatedAt))
-    .limit(1);
-  return row ?? null;
+    .orderBy(desc(banners.updatedAt));
 }

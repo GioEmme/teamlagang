@@ -237,7 +237,7 @@ export function BannerForm({ initial }: { initial: Initial }) {
       </Field>
 
       {/* ACTIVE */}
-      <Field label="Stato" hint="Spento = non si vede anche se è nel periodo di validità. Se più banner sono validi insieme, si vede l'ultimo modificato.">
+      <Field label="Stato" hint="Spento = non si vede anche se è nel periodo di validità. Se più banner sono validi insieme, si vedono in un carosello.">
         <label className="inline-flex items-center gap-3 cursor-pointer">
           <input
             type="checkbox"
