@@ -66,6 +66,27 @@ export const news = pgTable("news", {
     .defaultNow(),
 });
 
+// Popup promozionali mostrati in sovrimpressione all'apertura del sito.
+export const banners = pgTable("banners", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  title: text("title"),
+  caption: text("caption"),
+  imageUrl: text("image_url"),
+  linkUrl: text("link_url"),
+  // true: riappare a ogni nuova visita; false: chiuso una volta, resta chiuso (cookie)
+  showEveryVisit: boolean("show_every_visit").notNull().default(false),
+  active: boolean("active").notNull().default(false),
+  // finestra di validità: il banner si vede solo tra queste due date
+  startsAt: timestamp("starts_at", { withTimezone: true }).notNull(),
+  endsAt: timestamp("ends_at", { withTimezone: true }).notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
 export const verificationTokens = pgTable("verification_tokens", {
   token: text("token").primaryKey(),
   userId: uuid("user_id")
@@ -202,6 +223,7 @@ export type User = typeof users.$inferSelect;
 export type NewUser = typeof users.$inferInsert;
 export type News = typeof news.$inferSelect;
 export type NewNews = typeof news.$inferInsert;
+export type Banner = typeof banners.$inferSelect;
 export type VerificationToken = typeof verificationTokens.$inferSelect;
 export type MrEvent = typeof mrEvents.$inferSelect;
 export type MrChampionship = typeof mrChampionships.$inferSelect;

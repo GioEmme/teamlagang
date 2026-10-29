@@ -61,6 +61,43 @@ export const newsInputSchema = z.object({
   published: z.boolean(),
 });
 
+const optionalText = (max: number) =>
+  z
+    .string()
+    .max(max)
+    .trim()
+    .nullable()
+    .optional()
+    .transform((v) => v || null);
+
+const optionalUrl = z
+  .string()
+  .url("URL non valido")
+  .nullable()
+  .optional()
+  .or(z.literal("").transform(() => null));
+
+const requiredDate = (label: string) =>
+  z.iso.datetime({ offset: true, message: `${label}: data non valida` });
+
+export const bannerInputSchema = z
+  .object({
+    title: optionalText(200),
+    caption: optionalText(1000),
+    imageUrl: optionalUrl,
+    linkUrl: optionalUrl,
+    showEveryVisit: z.boolean(),
+    active: z.boolean(),
+    startsAt: requiredDate("Inizio validità"),
+    endsAt: requiredDate("Fine validità"),
+  })
+  .refine((b) => b.imageUrl || b.title, {
+    message: "Serve almeno un'immagine o un titolo",
+  })
+  .refine((b) => new Date(b.startsAt) < new Date(b.endsAt), {
+    message: "La fine deve essere dopo l'inizio",
+  });
+
 export const contactInputSchema = z.object({
   name: z.string().min(2, "Inserisci il tuo nome").max(100).trim(),
   email: emailSchema,
@@ -82,4 +119,5 @@ export type LoginInput = z.infer<typeof loginSchema>;
 export type UpdateProfileInput = z.infer<typeof updateProfileSchema>;
 export type ChangePasswordInput = z.infer<typeof changePasswordSchema>;
 export type NewsInput = z.infer<typeof newsInputSchema>;
+export type BannerInput = z.infer<typeof bannerInputSchema>;
 export type ContactInput = z.infer<typeof contactInputSchema>;

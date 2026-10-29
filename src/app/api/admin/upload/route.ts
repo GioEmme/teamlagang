@@ -42,8 +42,10 @@ export async function POST(req: Request) {
     );
   }
 
+  // Cartella su Blob: "news" (default) o "banner".
+  const folder = form.get("folder") === "banner" ? "banner" : "news";
   const ext = file.name.split(".").pop()?.toLowerCase() ?? "bin";
-  const key = `news/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+  const key = `${folder}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
 
   const blob = await put(key, file, {
     access: "public",

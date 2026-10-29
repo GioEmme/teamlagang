@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { sql } from "drizzle-orm";
 import { db } from "@/lib/db/client";
-import { news, users } from "@/lib/db/schema";
+import { banners, news, users } from "@/lib/db/schema";
 
 export const metadata: Metadata = {
   title: "Admin",
@@ -21,6 +21,13 @@ export default async function AdminHome() {
   const [userCount] = await db
     .select({ total: sql<number>`count(*)::int` })
     .from(users);
+
+  const [bannerCount] = await db
+    .select({
+      total: sql<number>`count(*)::int`,
+      active: sql<number>`count(*) filter (where ${banners.active})::int`,
+    })
+    .from(banners);
 
   return (
     <section className="mx-auto max-w-5xl px-5 md:px-10 py-16 md:py-24">
@@ -43,6 +50,12 @@ export default async function AdminHome() {
           title="Gestisci news"
           description="Crea, modifica, pubblica o archivia articoli."
           meta={`${newsCount.total} articoli`}
+        />
+        <AdminCard
+          href="/area-riservata/admin/banner"
+          title="Banner"
+          description="Popup in sovrimpressione all'apertura del sito per promuovere eventi."
+          meta={`${bannerCount.total} banner · ${bannerCount.active} attivi`}
         />
         <AdminCard
           href="#"
