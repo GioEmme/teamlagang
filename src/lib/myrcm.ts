@@ -117,31 +117,59 @@ const IIS_NAME_FILTER = sql`${mrChampionships.name} ILIKE '%Indoor Series%'`;
 export type IisSeason = {
   key: string; // grouping key + display label, e.g. "ITALIAN INDOOR SERIES 2025/26 (2025)"
   year: number;
-  // Source DB names that fold into this group (different capitalizations on myrcm)
-  names: string[];
+  // Championship rows that fold into this group
+  champIds: string[];
 };
 
-// Group raw championship names by UPPER(name) + year so that capitalization
-// variants on myrcm (e.g. "Italian Indoor Series" / "Italian indoor series")
-// collapse into a single season. Sorted by year DESC.
+const SEASON_RE = /\b(\d{2}(?:\d{2})?\/\d{2}(?:\d{2})?)\b/;
+
+// Group championships by UPPER(name) + year so that capitalization variants
+// on myrcm (e.g. "Italian Indoor Series" / "Italian indoor series") collapse
+// into a single season. When the name has no season tag (e.g. the GT is
+// just "Italian Indoor Series"), take it from its rounds' event names
+// ("Italian Indoor Series 26/27 1° prova"). Sorted by year DESC.
 export async function getIisSeasons(): Promise<IisSeason[]> {
-  const rows = await db
-    .select({
-      name: mrChampionships.name,
-      year: mrChampionships.year,
-    })
-    .from(mrChampionships)
-    .where(IIS_NAME_FILTER);
+  const [rows, rounds] = await Promise.all([
+    db
+      .select({
+        id: mrChampionships.id,
+        name: mrChampionships.name,
+        year: mrChampionships.year,
+      })
+      .from(mrChampionships)
+      .where(IIS_NAME_FILTER),
+    db
+      .select({
+        championshipId: mrChampionshipRounds.championshipId,
+        eventName: mrChampionshipRounds.eventName,
+      })
+      .from(mrChampionshipRounds)
+      .innerJoin(
+        mrChampionships,
+        eq(mrChampionshipRounds.championshipId, mrChampionships.id),
+      )
+      .where(IIS_NAME_FILTER)
+      .orderBy(asc(mrChampionshipRounds.roundNumber)),
+  ]);
+
+  const roundTag = new Map<string, string>();
+  for (const r of rounds) {
+    const tag = r.eventName.match(SEASON_RE)?.[1];
+    if (tag && !roundTag.has(r.championshipId)) roundTag.set(r.championshipId, tag);
+  }
 
   const byKey = new Map<string, IisSeason>();
   for (const r of rows) {
-    const key = `${r.name.toUpperCase()} (${r.year})`;
+    let name = r.name.toUpperCase();
+    const tag = roundTag.get(r.id);
+    if (!SEASON_RE.test(name) && tag) name = `${name} ${tag}`;
+    const key = `${name} (${r.year})`;
     let g = byKey.get(key);
     if (!g) {
-      g = { key, year: r.year, names: [] };
+      g = { key, year: r.year, champIds: [] };
       byKey.set(key, g);
     }
-    if (!g.names.includes(r.name)) g.names.push(r.name);
+    g.champIds.push(r.id);
   }
   return Array.from(byKey.values()).sort((a, b) => {
     if (b.year !== a.year) return b.year - a.year;
@@ -160,7 +188,7 @@ export async function getIisCategories(seasonKey: string): Promise<string[]> {
   const rows = await db
     .selectDistinct({ category: mrChampionships.category })
     .from(mrChampionships)
-    .where(inArray(mrChampionships.name, season.names))
+    .where(inArray(mrChampionships.id, season.champIds))
     .orderBy(asc(mrChampionships.category));
   return rows.map((r) => r.category);
 }
@@ -183,7 +211,7 @@ export async function getIisStandings(
     .from(mrChampionships)
     .where(
       and(
-        inArray(mrChampionships.name, season.names),
+        inArray(mrChampionships.id, season.champIds),
         eq(mrChampionships.category, category),
       ),
     )
