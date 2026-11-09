@@ -50,7 +50,7 @@ const FORMAT = [
   {
     n: "02",
     t: "Qualifiche",
-    d: "Tre qualifiche per categoria. Vale il miglior risultato in termini di giri/tempo (non la somma): un solo turno perfetto basta per partire davanti.",
+    d: "Tre o quattro qualifiche per categoria, a seconda del numero di iscritti. Contano i 2 migliori risultati in termini di giri/tempo.",
   },
   {
     n: "03",
