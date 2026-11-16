@@ -178,6 +178,7 @@ export const site = {
     // Report pubblicati in public/articoli/, collegati all'evento myrcm (dId).
     reports: {
       100934: "/articoli/iis-2026-r2/index.html",
+      100935: "/articoli/iis-2026-r3/index.html",
     } as Record<number, string>,
     paymentEmail: "info@teamlagang.it",
   },
