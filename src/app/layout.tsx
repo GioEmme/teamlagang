@@ -7,7 +7,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { SocialRail, SocialFab } from "@/components/SocialRail";
 import { site } from "@/lib/site";
-import { getNextEventInWindow } from "@/lib/myrcm";
+import { getUpcomingEventTeasers, type UpcomingEventTeaser } from "@/lib/myrcm";
 import { BannerPopup } from "@/components/BannerPopup";
 
 const anton = Anton({
@@ -64,16 +64,20 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+// Refresh the prerendered event list hourly (new events, changed dates).
+export const revalidate = 3600;
+
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  // Pulsing event teaser is shown when the next event is between 8 and 15 days away.
+  // Upcoming events for the pulsing countdown teaser; the rail/FAB pick the
+  // one inside the countdown window using the visitor's date.
   // Failure here must not break the layout — fall back to no teaser.
-  let nextEvent = null;
+  let upcomingEvents: UpcomingEventTeaser[] = [];
   try {
-    nextEvent = await getNextEventInWindow(8, 15);
+    upcomingEvents = await getUpcomingEventTeasers();
   } catch (err) {
-    console.error("layout: getNextEventInWindow failed", err);
+    console.error("layout: getUpcomingEventTeasers failed", err);
   }
 
   return (
@@ -88,8 +92,8 @@ export default async function RootLayout({
             nav={<Navigation />}
             rails={
               <>
-                <SocialRail nextEvent={nextEvent} />
-                <SocialFab nextEvent={nextEvent} />
+                <SocialRail events={upcomingEvents} />
+                <SocialFab events={upcomingEvents} />
                 <BannerPopup />
               </>
             }

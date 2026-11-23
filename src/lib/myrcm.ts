@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, gte, inArray, lt, lte, sql } from "drizzle-orm";
+import { and, asc, desc, eq, gte, inArray, lt, sql } from "drizzle-orm";
 import { db } from "@/lib/db/client";
 import {
   mrChampionshipRounds,
@@ -50,62 +50,43 @@ export async function getLatestEvents(limit = 10) {
     .limit(limit);
 }
 
-// Closest upcoming event whose start_date falls inside [today+minDays, today+maxDays].
-// Used by the rail/FAB to show a pulsing CTA that pings users when an event is near.
-export type NextEventTeaser = {
+// Next few events starting from today (server date), soonest first.
+// The rail/FAB filters them by countdown window in the browser, so the
+// "days until" number never freezes into a prerendered page.
+export type UpcomingEventTeaser = {
   myrcmId: number;
   name: string;
-  daysUntil: number;
+  startDate: string; // YYYY-MM-DD
 };
 
-export async function getNextEventInWindow(
-  minDays: number,
-  maxDays: number,
-): Promise<NextEventTeaser | null> {
+export async function getUpcomingEventTeasers(
+  limit = 5,
+): Promise<UpcomingEventTeaser[]> {
   const today = new Date();
-  const todayMidnight = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate(),
-  );
+  // One day of slack so a page rendered just before midnight (or in UTC
+  // vs. Europe/Rome) still carries tomorrow's event.
+  today.setDate(today.getDate() - 1);
   const fmt = (d: Date) =>
     `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 
-  const startBound = new Date(todayMidnight);
-  startBound.setDate(startBound.getDate() + minDays);
-  const endBound = new Date(todayMidnight);
-  endBound.setDate(endBound.getDate() + maxDays);
-
-  const [row] = await db
+  const rows = await db
     .select({
       myrcmId: mrEvents.myrcmId,
       name: mrEvents.name,
       startDate: mrEvents.startDate,
     })
     .from(mrEvents)
-    .where(
-      and(
-        gte(mrEvents.startDate, fmt(startBound)),
-        lte(mrEvents.startDate, fmt(endBound)),
-      ),
-    )
+    .where(gte(mrEvents.startDate, fmt(today)))
     .orderBy(asc(mrEvents.startDate))
-    .limit(1);
+    .limit(limit);
 
-  if (!row) return null;
-
-  // Compute days until — drizzle returns YYYY-MM-DD string for date columns
-  const sd = row.startDate as unknown as string | Date;
-  const iso =
-    typeof sd === "string"
-      ? sd.slice(0, 10)
-      : `${sd.getFullYear()}-${String(sd.getMonth() + 1).padStart(2, "0")}-${String(sd.getDate()).padStart(2, "0")}`;
-  const eventDate = new Date(`${iso}T00:00:00`);
-  const daysUntil = Math.round(
-    (eventDate.getTime() - todayMidnight.getTime()) / 86400000,
-  );
-
-  return { myrcmId: row.myrcmId, name: row.name, daysUntil };
+  // drizzle returns YYYY-MM-DD string for date columns
+  return rows.map((row) => {
+    const sd = row.startDate as unknown as string | Date;
+    const startDate =
+      typeof sd === "string" ? sd.slice(0, 10) : fmt(sd);
+    return { myrcmId: row.myrcmId, name: row.name, startDate };
+  });
 }
 
 // ----------------- Italian Indoor Series only (results) -----------------

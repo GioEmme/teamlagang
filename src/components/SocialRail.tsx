@@ -4,7 +4,41 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
-import type { NextEventTeaser } from "@/lib/myrcm";
+import type { UpcomingEventTeaser } from "@/lib/myrcm";
+
+// Countdown teaser window, in days from today (visitor's local date).
+const TEASER_MIN_DAYS = 1;
+const TEASER_MAX_DAYS = 15;
+
+type NextEventTeaser = { name: string; daysUntil: number };
+
+function pickNextEvent(events: UpcomingEventTeaser[]): NextEventTeaser | null {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  for (const e of events) {
+    const [y, m, d] = e.startDate.split("-").map(Number);
+    const daysUntil = Math.round(
+      (new Date(y, m - 1, d).getTime() - today.getTime()) / 86400000,
+    );
+    if (daysUntil >= TEASER_MIN_DAYS && daysUntil <= TEASER_MAX_DAYS) {
+      return { name: e.name, daysUntil };
+    }
+  }
+  return null;
+}
+
+// Computed after mount so the number always reflects today, never the day
+// the page was prerendered. Re-checked hourly for tabs left open overnight.
+function useNextEvent(events: UpcomingEventTeaser[]) {
+  const [next, setNext] = useState<NextEventTeaser | null>(null);
+  useEffect(() => {
+    const update = () => setNext(pickNextEvent(events));
+    update();
+    const t = setInterval(update, 3600_000);
+    return () => clearInterval(t);
+  }, [events]);
+  return next;
+}
 
 type Social = {
   name: string;
@@ -116,10 +150,11 @@ const socials: Social[] = (
 ).filter((x): x is Social => x !== null);
 
 export function SocialRail({
-  nextEvent = null,
+  events = [],
 }: {
-  nextEvent?: NextEventTeaser | null;
+  events?: UpcomingEventTeaser[];
 }) {
+  const nextEvent = useNextEvent(events);
   const [hovered, setHovered] = useState<string | null>(null);
   const [eventHover, setEventHover] = useState(false);
   const [attention, setAttention] = useState(true);
@@ -296,10 +331,11 @@ export function SocialRail({
 }
 
 export function SocialFab({
-  nextEvent = null,
+  events = [],
 }: {
-  nextEvent?: NextEventTeaser | null;
+  events?: UpcomingEventTeaser[];
 }) {
+  const nextEvent = useNextEvent(events);
   const [open, setOpen] = useState(false);
   const [attention, setAttention] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
